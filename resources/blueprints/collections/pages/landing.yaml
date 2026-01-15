@@ -1,0 +1,190 @@
+title: Home
+tabs:
+  hero:
+    display: 'Hero Section'
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: hero_badge
+            field:
+              type: text
+              default: vattenförening
+          -
+            handle: hero_title
+            field:
+              type: text
+          -
+            handle: hero_content
+            field:
+              type: bard
+              buttons:
+                - bold
+                - italic
+          -
+            handle: hero_image
+            field:
+              type: assets
+              container: assets
+              max_files: 1
+          -
+            handle: hero_image_alt
+            field:
+              type: text
+  cards:
+    display: 'Info Cards Section'
+    sections:
+      -
+        fields:
+          -
+            handle: cards_title
+            field:
+              type: text
+          -
+            handle: cards_description
+            field:
+              type: bard
+          -
+            handle: cards
+            field:
+              type: replicator
+              sets:
+                main:
+                  display: Main
+                  sets:
+                    card:
+                      display: Card
+                      fields:
+                        -
+                          handle: title
+                          field:
+                            type: text
+                            display: Title
+                        -
+                          handle: card_content
+                          field:
+                            type: textarea
+                        -
+                          handle: card_link
+                          field:
+                            type: form
+                        -
+                          handle: card_link_text
+                          field:
+                            type: text
+                        -
+                          handle: icon
+                          field:
+                            type: iconify
+                            display: Icon
+                            store_as: svg_data
+  status:
+    display: 'System Status'
+    sections:
+      -
+        fields:
+          -
+            handle: system_status
+            field:
+              type: group
+              display: Status
+              fields:
+                -
+                  handle: status
+                  field:
+                    type: select
+                    options:
+                      operational: Operational
+                      warning: Warning
+                      error: Error
+                -
+                  handle: message
+                  field:
+                    type: textarea
+                -
+                  handle: last_updated
+                  field:
+                    type: date
+                    display: 'Last updated'
+                    time_enabled: true
+  services:
+    display: 'Services Section'
+    sections:
+      -
+        fields:
+          -
+            handle: services_title
+            field:
+              type: text
+          -
+            handle: services_content
+            field:
+              type: bard
+  about:
+    display: 'About Section'
+    sections:
+      -
+        fields:
+          -
+            handle: about_title
+            field:
+              type: text
+          -
+            handle: about_content
+            field:
+              type: bard
+          -
+            handle: property_count
+            field:
+              type: integer
+              default: 30
+          -
+            handle: about_image
+            field:
+              type: assets
+              container: assets
+              max_files: 1
+  contact:
+    display: 'Contact Section'
+    sections:
+      -
+        fields:
+          -
+            handle: contact_intro
+            field:
+              type: bard
+          -
+            handle: contact_phone
+            field:
+              type: text
+          -
+            handle: contact_email
+            field:
+              type: text
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true

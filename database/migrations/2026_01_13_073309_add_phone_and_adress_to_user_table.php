@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('phone')->nullable();
+            $table->string('street_name');
+            $table->string('city');
+            $table->string('postal_code');
+            $table->string('property_number');
+            $table->enum('membership_status', ['active', 'inactive', 'pending'])->default('pending');
+            $table->decimal('balance', 10, 2)->default(0);
+            $table->string('is_admin')->default('0');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn(['phone', 'street_name', 'city', 'postal_code', 'property_number', 'membership_status', 'balance', 'is_admin']);
+        });
+    }
+};

@@ -1,0 +1,83 @@
+<footer class="bg-muted/50 border-t border-gray-300">
+    <div class="container py-12 mx-auto px-4">
+        <div class="grid gap-8 md:grid-cols-3">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="p-2 rounded-lg water-gradient"></div>
+                    <span class="font-serif font-semibold text-foreground">
+                        Västra Karbäckens vattenförening
+                    </span>
+                </div>
+
+                <p class="text-sm text-muted-foreground max-w-xs">
+                    Vi förser cirka 30 fastigheter i Västra Karbäcken med rent
+                    och friskt vatten.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-foreground mb-4">Snabblänkar</h3>
+                <ul class="space-y-2 text-sm">
+                    <li>
+                        <a
+                            href="#om-oss"
+                            class="text-muted-foreground hover:text-foreground transition-colors focus-ring rounded"
+                        >
+                            Om föreningen
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#status"
+                            class="text-muted-foreground hover:text-foreground transition-colors focus-ring rounded"
+                        >
+                            Driftstatus
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="#kontakt"
+                            class="text-muted-foreground hover:text-foreground transition-colors focus-ring rounded"
+                        >
+                            Kontakta oss
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-foreground mb-4">Kontakt</h3>
+                <ul class="space-y-3 text-sm">
+                    {{ if contact_phone }}
+                    <li class="text-muted-foreground">
+                        <a
+                            href="tel:{{ contact_phone }}"
+                            class="hover:text-foreground transition-colors focus-ring rounded"
+                        >
+                            {{ contact_phone }}
+                        </a>
+                    </li>
+                    {{ /if }} {{ if contact_email }}
+                    <li class="text-muted-foreground">
+                        <a
+                            href="mailto:{{ contact_email }}"
+                            class="hover:text-foreground transition-colors focus-ring rounded"
+                        >
+                            {{ contact_email }}
+                        </a>
+                    </li>
+                    {{ /if }}
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="mt-10 pt-6 border-t border-gray-300 text-center text-sm text-muted-foreground"
+        >
+            <p>
+                © {{ now format="Y" }} Västra Karbäckens vattenförening. Alla
+                rättigheter förbehållna.
+            </p>
+        </div>
+    </div>
+</footer>
