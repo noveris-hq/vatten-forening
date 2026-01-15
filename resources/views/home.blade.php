@@ -84,16 +84,16 @@
                             {!! $page->about_content !!}
                         </div>
 
-                        @if ($page->property_count)
-                            <div class="mt-8 p-4 bg-white rounded-lg border border-gray-200 shadow-sm">
-                                <p class="font-medium text-gray-900">
-                                    Västra Karbäcken
-                                </p>
-                                <p class="text-sm text-gray-600">
-                                    ~{{ $page->property_count }} anslutna fastigheter
-                                </p>
-                            </div>
-                        @endif
+                        {{-- @if ($page->property_count) --}}
+                        {{--     <div class="mt-8 p-4 bg-white rounded-lg border border-gray-200 shadow-sm"> --}}
+                        {{--         <p class="font-medium text-gray-900"> --}}
+                        {{--             Västra Karbäcken --}}
+                        {{--         </p> --}}
+                        {{--         <p class="text-sm text-gray-600"> --}}
+                        {{--             ~{{ $page->property_count }} anslutna fastigheter --}}
+                        {{--         </p> --}}
+                        {{--     </div> --}}
+                        {{-- @endif --}}
                     </div>
 
                     <div class="relative">
@@ -107,8 +107,8 @@
                         @if ($page->property_count)
                             <div
                                 class="absolute -bottom-4 -left-4 p-4 bg-white rounded-lg shadow-xl border border-gray-200">
-                                <p class="text-2xl font-serif font-bold text-blue-600">
-                                    {{ $page->property_count }}+
+                                <p class="text-2xl font-serif font-bold text-blue-900/90">
+                                    {{ $page->property_count }}st
                                 </p>
                                 <p class="text-sm text-gray-600">fastigheter</p>
                             </div>

@@ -31,23 +31,36 @@
                     class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
                     Kontakt
                 </a>
-                @if (auth()->check())
-                    <a href="/medlemsportal"
-                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Min sida
+                @if (auth()->check() && auth()->user()->is_admin)
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Adminpanel
                     </a>
-                    <form method="POST" action="/logout" class="ml-3 inline-block">
+                    <form method="POST" action="/logout" class="inline-flex items-center ml-3">
+
                         @csrf
-                        <button type="submit" class="items-center">
+                        <button type="submit" class="items-center" title="Logga ut">
                             {{--     Logga ut --}}
                             <x-ionicon-log-out-outline
                                 class="w-8
                             h-8 text-gray-500 hover:cursor-pointer" />
                         </button>
                     </form>
+                @elseif (auth()->check())
+                    <a href="{{ route('member.dashboard') }}"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Medlemsportal
+                    </a>
+                    <form method="POST" action="/logout" class="inline-flex items-center ml-3">
+                        @csrf
+                        <button type="submit" title="Logga ut">
+                            {{--     Logga ut --}}
+                            <x-ionicon-log-out-outline class="w-8 h-8 text-gray-500 hover:cursor-pointer" />
+                        </button>
+                    </form>
                 @else
                     <a href="/login"
-                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
                         Logga in
                     </a>
                 @endif
@@ -87,24 +100,55 @@
                     class="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
                     Kontakt
                 </a>
-                @if (auth()->check())
-                    <a href="/medlemsportal"
-                        class="mt-3 mx-4 inline-flex items-center justify-center px-4 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Min sida
+                @if (auth()->check() && auth()->user()->is_admin)
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md  transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Adminpanel
                     </a>
-                    <form method="POST" action="/logout" class="mt-3 mx-4 inline-block">
+                    <form method="POST" action="/logout" class=" ml-3 mt-3">
                         @csrf
                         <button type="submit"
-                            class="inline-flex items-center justify-center px-4 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500">
+                            class="w-full inline-flex items-center justify-center px-4 py-2 bg-red-600 hover:cursor-pointer text-white text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Logga ut
+                        </button>
+                    </form>
+                @elseif (auth()->check())
+                    <a href="{{ route('member.dashboard') }}"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Medlemsportal
+                    </a>
+                    <form method="POST" action="/logout" class=" ml-3 mt-3">
+                        @csrf
+                        <button type="submit"
+                            class="w-full inline-flex items-center justify-center hover:cursor-pointer px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
                             Logga ut
                         </button>
                     </form>
                 @else
                     <a href="/login"
-                        class="mt-3 mx-4 inline-flex items-center justify-center px-4 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
                         Logga in
                     </a>
                 @endif
+                {{-- --}}
+                {{-- @if (auth()->check()) --}}
+                {{--     <a href="/medlemsportal" --}}
+                {{--         class="mt-3 mx-4 inline-flex items-center justify-center px-4 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"> --}}
+                {{--         Min sida --}}
+                {{--     </a> --}}
+                {{--     <form method="POST" action="/logout" class="mt-3 mx-4 inline-block"> --}}
+                {{--         @csrf --}}
+                {{--         <button type="submit" --}}
+                {{--             class="inline-flex items-center justify-center px-4 py-3 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500"> --}}
+                {{--             Logga ut --}}
+                {{--         </button> --}}
+                {{--     </form> --}}
+                {{-- @else --}}
+                {{--     <a href="/login" --}}
+                {{--         class="mt-3 mx-4 inline-flex items-center justify-center px-4 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"> --}}
+                {{--         Logga in --}}
+                {{--     </a> --}}
+                {{-- @endif --}}
             </div>
         </nav>
     </div>

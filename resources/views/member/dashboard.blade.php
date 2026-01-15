@@ -2,7 +2,7 @@
 
 @section('content')
     <x-dashboard-nav />
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 ">
         <x-greeting :user="$user" />
         <div class="space-y-6">
             <x-overview :user="$user" :balance="$balance" :latestNews="$latestNews" :importantNews="$importantNews" />

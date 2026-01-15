@@ -1,7 +1,5 @@
 @extends('member.layout')
 
-{{-- @section('title', 'Min sida - Medlemsportal') --}}
-
 @section('content')
     <x-dashboard-nav />
     <main class="container mx-auto px-4 py-8">
@@ -9,9 +7,8 @@
         <div class="space-y-6">
             <!-- Card wrapper -->
             <div class="rounded-xl">
-
                 <div class="grid gap-6 md:grid-cols-2">
-                    <div class="rounded-lg bg-white text-card-foreground border border-gray-200">
+                    <div class="h-fit rounded-lg bg-white text-card-foreground border border-gray-200">
                         <div class="flex flex-col space-y-1.5 p-6">
                             <h3 class="text-2xl font-semibold leading-none tracking-tight">Betalningsstatus</h3>
                             <p class="text-sm text-gray-700">Översikt över din medlemsavgift</p>

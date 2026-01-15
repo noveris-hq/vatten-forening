@@ -24,12 +24,12 @@ Route::prefix('medlemsportal')->middleware('auth')->group(function () {
     Route::get('/betalningar', [PaymentController::class, 'index'])->name('member.payments');
 });
 
-Route::middleware('auth')->group(function () {
+Route::prefix('adminportal')->middleware('auth')->group(function () {
     Route::resource('admin/news', NewsController::class);
-    Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 });
 
-Route::middleware('admin')->get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+Route::prefix('adminportal')->middleware('admin')->get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 // Fortify handles these automatically:
 // /login (GET/POST)

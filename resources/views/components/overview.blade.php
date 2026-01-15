@@ -36,24 +36,25 @@
 
  <div class="grid gap-6 md:grid-cols-2">
      <!-- Senaste nyheterna -->
-     <div class="rounded-lg border border-gray-200 bg-card text-card-foreground shadow-sm">
+     <div class="rounded-lg border border-gray-200 shadow-sm">
          <div class="p-6 pb-3">
              <h3 class="text-lg font-semibold">Senaste nytt</h3>
-             <p class="text-sm text-muted-foreground">Nyheter och information från styrelsen</p>
+             <p class="text-sm text-gray-500">Nyheter och information från styrelsen</p>
          </div>
-         <div class="px-6 pb-6 space-y-4">
+         <div class="px-6
+                 pb-6 space-y-4">
              @foreach ($latestNews as $news)
-                 <div class="flex items-start gap-3 pb-3 border-b border-gray-200 last:border-0 last:pb-0">
-                     <div class="h-2 w-2 rounded-full bg-primary mt-2 shrink-0"></div>
+                 <div class="flex items-start mt-3 gap-3 pb-3 border-b border-gray-200 last:border-0 last:pb-0">
+                     {{-- <div class="h-2 w-2 rounded-full bg-primary mt-2 shrink-0"></div> --}}
                      <div class="flex-1 min-w-0">
                          <div class="flex items-center gap-2">
                              <h4 class="font-medium text-sm">{{ $news->title }}</h4>
                              @if ($news->is_important)
                                  <span
-                                     class="inline-flex items-center rounded bg-secondary px-1.5 py-0.5 text-xs">Viktigt</span>
+                                     class="inline-flex items-center rounded-lg bg-blue-900/10 text-blue-900 font-bold px-1.5 py-0.5 text-xs">Viktigt</span>
                              @endif
                          </div>
-                         <p class="text-xs text-muted-foreground mt-0.5">
+                         <p class="text-xs text-gray-500 mt-0.5">
                              {{ $news->date->format('Y-m-d') }}
                          </p>
                      </div>
