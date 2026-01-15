@@ -135,7 +135,7 @@
                                             <p class="text-sm text-muted-foreground mt-1">{{ $item['content'] }}</p>
                                         </div>
                                         <span
-                                            class="text-xs text-muted-foreground whitespace-nowrap">{{ $item['date'] }}</span>
+                                            class="text-xs text-muted-foreground whitespace-nowrap">{{ $item['created_at'] }}</span>
                                     </div>
                                 </div>
                             @endforeach

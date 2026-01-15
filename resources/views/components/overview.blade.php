@@ -32,6 +32,13 @@
              </div>
          </div>
      </div>
+ @elseif ($latestNews->isEmpty())
+     <div class="rounded-lg border border-gray-200 bg-card text-card-foreground shadow-sm">
+         <div class="p-6">
+             <h3 class="text-lg font-semibold">Inga nyheter</h3>
+             <p class="text-sm text-gray-500">Det finns inga viktiga meddelanden för tillfället.</p>
+         </div>
+     </div>
  @endif
 
  <div class="grid gap-6 md:grid-cols-2">
@@ -43,9 +50,13 @@
          </div>
          <div class="px-6
                  pb-6 space-y-4">
+             @if ($latestNews->isEmpty())
+                 <p class="text-sm text-black">Det finns inga nyheter för tillfället.</p>
+             @endif
              @foreach ($latestNews as $news)
                  <div class="flex items-start mt-3 gap-3 pb-3 border-b border-gray-200 last:border-0 last:pb-0">
                      {{-- <div class="h-2 w-2 rounded-full bg-primary mt-2 shrink-0"></div> --}}
+                     <div class='h-2 w-2 mt-2 shrink-0 bg-blue-900/70 rounded-full'></div>
                      <div class="flex-1 min-w-0">
                          <div class="flex items-center gap-2">
                              <h4 class="font-medium text-sm">{{ $news->title }}</h4>
@@ -57,6 +68,10 @@
                          <p class="text-xs text-gray-500 mt-0.5">
                              {{ $news->date->format('Y-m-d') }}
                          </p>
+                         {{-- TODO: Show full content or link to full news article --}}
+                         {{-- <p class="text-sm text-gray-700 mt-2"> --}}
+                         {{--     {{ Str::limit($news->content, 15, '...') }} --}}
+                         {{-- </p> --}}
                      </div>
                  </div>
              @endforeach

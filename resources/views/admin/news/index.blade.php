@@ -41,7 +41,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b">
                                 {{ Str::limit($item->content, 50) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b">
-                                {{ $item->date->format('Y-m-d') }}</td>
+                                {{ $item->created_at }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b">
                                 {{ $item->is_important ? 'Ja' : 'Nej' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium border-b">
