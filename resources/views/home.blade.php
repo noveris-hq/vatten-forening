@@ -47,7 +47,7 @@
         <section id="status" class="py-8 bg-gray-50">
             <div class="container mx-auto px-4 max-w-2xl">
                 @if ($page->system_status)
-                    <x-status-banner :status="$page->system_status['status']" :message="$page->system_status['message']" :lastUpdated="$page->system_status['last_updated']" :last_updated="$page->system_status['last_updated']" />
+                    <x-status-banner :status="$status"/>
                 @endif
             </div>
         </section>

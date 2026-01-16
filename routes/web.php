@@ -6,6 +6,7 @@ use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\DocumentController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 // Route::statamic('example', 'example-view', [
@@ -27,6 +28,9 @@ Route::prefix('medlemsportal')->middleware('auth')->group(function () {
 Route::prefix('adminportal')->middleware('auth')->group(function () {
     Route::resource('admin/news', NewsController::class);
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/status', [StatusController::class, 'index'])->name('status.index');
+    /* Route::get('/status/edit', [StatusController::class, 'edit'])->name('status.edit'); */
+    Route::put('/status', [StatusController::class, 'update'])->name('status.update');
 });
 
 Route::prefix('adminportal')->middleware('admin')->get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -39,5 +43,4 @@ Route::prefix('adminportal')->middleware('admin')->get('/', [AdminDashboardContr
 // /reset-password (GET/POST)
 
 // Contact form
-/* Route::post('/kontakt', [App\Http\Controllers\ContactController::class, 'submit']) */
-/*     ->name('contact.submit'); */
+/* Route::post('/kontakt', [App\Http\Controllers\ContactController::class, 'submit']) *100*     ->name('contact.submit'); */

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,11 +21,14 @@ class AdminDashboardController extends Controller
          */
 
         // Later: fetch from database
-        $status = [
-            'status' => 'operational',
-            'message' => 'Vattensystemet fungerar normalt. Inga pågående driftstörningar.',
-            'lastUpdated' => '8 januari 2026, kl. 08:00',
-        ];
+        $status = Status::latest()->first();
+        $formattedUpdatedAt = $status ? $status->formatted_updated_at : null;
+
+        /* $status = [ */
+        /*     'status' => 'operational', */
+        /*     'message' => 'Vattensystemet fungerar normalt. Inga pågående driftstörningar.', */
+        /*     'lastUpdated' => '8 januari 2026, kl. 08:00', */
+        /* ]; */
 
         $news = News::orderBy('created_at', 'desc')->get();
 
@@ -54,7 +58,7 @@ class AdminDashboardController extends Controller
 
         $memberCount = User::where('is_admin', '0')->count();
 
-        return view('admin.dashboard', compact('status', 'documents', 'news', 'memberCount'), [
+        return view('admin.dashboard', compact('status', 'documents', 'news', 'memberCount', 'formattedUpdatedAt'), [
             'title' => 'Admin Dashboard',
         ]);
     }
