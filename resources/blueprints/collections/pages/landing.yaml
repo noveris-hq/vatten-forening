@@ -85,35 +85,6 @@ tabs:
                             type: iconify
                             display: Icon
                             store_as: svg_data
-  status:
-    display: 'System Status'
-    sections:
-      -
-        fields:
-          -
-            handle: system_status
-            field:
-              type: group
-              display: Status
-              fields:
-                -
-                  handle: status
-                  field:
-                    type: select
-                    options:
-                      operational: Operational
-                      warning: Warning
-                      error: Error
-                -
-                  handle: message
-                  field:
-                    type: textarea
-                -
-                  handle: last_updated
-                  field:
-                    type: date
-                    display: 'Last updated'
-                    time_enabled: true
   services:
     display: 'Services Section'
     sections:

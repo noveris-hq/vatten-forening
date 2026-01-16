@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use Illuminate\View\View;
 use Statamic\Facades\Entry;
 
 class HomeController extends Controller
@@ -10,7 +11,7 @@ class HomeController extends Controller
     /**
      * Display the home page.
      */
-    public function index()
+    public function index(): View
     {
         $status = Status::latest()->first();
         $formattedUpdatedAt = $status ? $status->formatted_updated_at : null;

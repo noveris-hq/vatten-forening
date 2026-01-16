@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class StatusController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-
         $value = Status::latest()->first();
         $formattedUpdatedAt = $value ? $value->formatted_updated_at : null;
 
@@ -18,9 +19,9 @@ class StatusController extends Controller
         ], compact('value'));
     }
 
-    public function update(Request $request)  // Remove Status $status
+    public function update(Request $request): RedirectResponse
     {
-        $data = $request->validate([  // Use $request instead of request()
+        $data = $request->validate([
             'status' => 'required|string',
             'message' => 'required|string',
         ]);

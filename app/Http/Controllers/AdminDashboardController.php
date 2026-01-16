@@ -6,13 +6,14 @@ use App\Models\News;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
 
         /**

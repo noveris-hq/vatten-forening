@@ -3,26 +3,25 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $user = auth()->user();
-        if (! $user) {
-            return redirect()->route('login');
-        }
 
         // Placeholder data - replace with real data later
         $balance = 1200; // Placeholder
 
-        $latestNews = \App\Models\News::orderBy('date', 'desc')->take(3)->get();
-        $importantNews = \App\Models\News::where('is_important', true)->orderBy('date', 'desc')->first();
+        $latestNews = News::orderBy('date', 'desc')->take(3)->get();
+        $importantNews = News::where('is_important', true)->orderBy('date', 'desc')->first();
 
         return view('member.dashboard', compact('user', 'balance', 'latestNews', 'importantNews'), [
             'title' => 'Medlemsportal',
