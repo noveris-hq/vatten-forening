@@ -28,11 +28,22 @@ class StatusController extends Controller
         $status = Status::latest()->first();
         if ($status) {
             $status->update($data);
+            notify()
+                ->success()
+                ->title('Status uppdaterad!')
+                ->send();
 
-            return redirect()->route('admin.dashboard')->with('success', 'Status uppdaterad!');
+            return redirect()->route('admin.dashboard');
+        } else {
+            /* Status::create($data); */
+            notify()
+                ->success()
+                ->title('Status skapad!')
+                ->send();
+
+            return redirect()->route('admin.dashboard');
         }
-        Status::create($data);
 
-        return redirect()->route('admin.dashboard')->with('success', 'Status uppdaterad!');
+        return redirect()->route('admin.dashboard');
     }
 }

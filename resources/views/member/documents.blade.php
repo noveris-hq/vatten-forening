@@ -16,7 +16,7 @@
             <!-- Documents Grid -->
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @if (auth()->user()->is_admin)
-                    <a href="{{ route('admin.upload.index') }}"
+                    <a href="{{ route('admin.document.index') }}"
                         class="rounded-lg border border-dashed border-gray-300 bg-card text-card-foreground shadow-sm flex items-center justify-center p-6 hover:bg-gray-50">
                         <div class="text-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary mb-2" viewBox="0 0 24 24"

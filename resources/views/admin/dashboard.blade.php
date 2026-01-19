@@ -210,7 +210,7 @@
                                                 </p>
                                                 <div class="flex gap-2 text-xs text-muted-foreground mt-0.5">
                                                     <span
-                                                        class="px-1.5 py-0.5 rounded bg-gray-200">{{ $translation[$doc->category] }}</span>
+                                                        class="px-1.5 py-0.5 rounded bg-gray-200">{{ $translation[$doc->category] ?? 'Okänd kategori' }}</span>
                                                     {{-- <span>År {{ $doc['year'] }}</span> --}}
                                                     {{-- <span>{{ $doc->getFormattedSizeAttribute }} KB</span> --}}
                                                     <span>Uppladdad {{ $doc->created_at->format('Y-m-d H:i') }}</span>

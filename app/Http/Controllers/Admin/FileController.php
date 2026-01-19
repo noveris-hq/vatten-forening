@@ -27,8 +27,12 @@ class FileController extends Controller
     {
         $request->validate([
             'file' => 'required|mimes:pdf,xlx,csv,docx|max:10240', // Max size 10MB
-            'category' => 'string|max:255',
+            'category' => 'required|string|max:255',
+        ], [
+            'file.required' => 'Vänligen välj en fil att ladda upp.',
+            'category.required' => 'Vänligen ange en kategori.',
         ]);
+        /* dd($request); */
 
         $fileName = $request->file('file')->getClientOriginalName();
 
@@ -53,6 +57,11 @@ class FileController extends Controller
             /* 'members_only' => true, */
         ]);
 
+        notify()
+            ->success()
+            ->title('Dokumentet uppladdat!')
+            ->send();
+
         return redirect()
             ->route('admin.dashboard', compact('fileName'))
             ->with('success', 'Fil uppladdad: '.$fileName);
@@ -73,10 +82,20 @@ class FileController extends Controller
         // Delete file from storage
         if (Storage::disk('local')->exists($document->path)) {
             Storage::disk('local')->delete($document->path);
+        } else {
+            notify()
+                ->warning()
+                ->title('Filen hittades!')
+                ->send();
         }
 
         // Delete from database
         $document->delete();
+
+        notify()
+            ->success()
+            ->title('Dokument raderat!')
+            ->send();
 
         return redirect()
             ->route('admin.dashboard')

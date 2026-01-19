@@ -2,6 +2,7 @@
 @plugin "@tailwindcss/typography";
 @source "../views";
 @source "../../content";
+@source "../../vendor/mckenziearts/laravel-notify/resources/views/**/*.blade.php";
 
 :root {
     --hero-overlay: linear-gradient(

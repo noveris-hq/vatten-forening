@@ -45,7 +45,12 @@ class NewsController extends Controller
 
         News::create($request->all());
 
-        return redirect()->route('news.index')->with('success', 'Nyhet skapad!');
+        notify()
+            ->success()
+            ->title('Nyhet skapad!')
+            ->send();
+
+        return redirect()->route('news.index');
     }
 
     /**
@@ -83,7 +88,12 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->update($request->all());
 
-        return redirect()->route('news.index')->with('success', 'Nyhet uppdaterad!');
+        notify()
+            ->success()
+            ->title('Nyhet updaterad!')
+            ->send();
+
+        return redirect()->route('news.index');
     }
 
     /**
@@ -94,6 +104,11 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->delete();
 
-        return redirect()->route('news.index')->with('success', 'Nyhet raderad!');
+        notify()
+            ->success()
+            ->title('Nyhet raderad!')
+            ->send();
+
+        return redirect()->route('news.index');
     }
 }

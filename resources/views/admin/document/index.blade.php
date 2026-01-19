@@ -41,18 +41,18 @@
 
                                 <input type="file" id="file-input" name="file" accept=".pdf,.xlsx,.csv,.docx"
                                     @error('name') input-error @enderror" class="hidden" />
-                                @error('file-input')
-                                    <div class="label -mt-4 mb-2">
-                                        <span class="label-text-alt text-error">{{ $message }}</span>
-                                    </div>
-                                @enderror
+                                {{-- @error('file-input') --}}
+                                {{--     <div class="label -mt-4 mb-2"> --}}
+                                {{--         <span class="label-text-alt text-error">{{ $message }}</span> --}}
+                                {{--     </div> --}}
+                                {{-- @enderror --}}
 
 
                                 <div id="file-name-display" class="mt-3 sm:mt-0 text-sm text-gray-700 hidden">
                                     Vald fil: <span id="file-name-text" class="font-medium text-indigo-700"></span>
                                 </div>
                             </div>
-                            <select name="category" id="category" required
+                            <select name="category" id="category" @error('category') input-error @enderror"
                                 class="mt-3 sm:mt-0 block w-full sm:w-auto border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="" disabled selected>Välj kategori</option>
                                 <option value="yearly-rapport">Årsrapport</option>
@@ -60,9 +60,27 @@
                                 <option value="invoices">Fakturor</option>
                             </select>
 
+                            {{-- @error('category') --}}
+                            {{--     <div class="label -mt-4 mb-2"> --}}
+                            {{--         <span class="label-text-alt text-red-400">{{ $message }}</span> --}}
+                            {{--     </div> --}}
+                            {{-- @enderror --}}
+
+
                             <p class="text-xs text-gray-500">
                                 Tillåtna format: PDF, XLSX, CSV, DOCX • Max 10 MB
                             </p>
+
+                            @error('category')
+                                <div class="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-sm">
+                                    <svg class="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-red-800">{{ $message }}</span>
+                                </div>
+                            @enderror
 
                             @error('file')
                                 <div class="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-sm">

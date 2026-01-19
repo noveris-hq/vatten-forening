@@ -27,12 +27,6 @@ class AdminDashboardController extends Controller
         $status = Status::latest()->first();
         $formattedUpdatedAt = $status ? $status->formatted_updated_at : null;
 
-        /* $status = [ */
-        /*     'status' => 'operational', */
-        /*     'message' => 'Vattensystemet fungerar normalt. Inga pågående driftstörningar.', */
-        /*     'lastUpdated' => '8 januari 2026, kl. 08:00', */
-        /* ]; */
-
         $news = News::orderBy('created_at', 'desc')->get();
 
         $documents = Document::latest()->get();
