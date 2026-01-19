@@ -21,11 +21,11 @@
                 <div class="p-8">
 
                     <div class="mb-8">
-                        <h2 class="text-2xl font-bold text-gray-900 mb-2">{{ $title ?? 'Filuppladdning' }}</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Ladda upp dokument</h2>
                         <p class="text-gray-500">Ladda upp dina dokument säkert till plattformen</p>
                     </div>
 
-                    <form action="{{ route('admin.upload.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.document.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="space-y-6">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
@@ -40,13 +40,19 @@
                                 </label>
 
                                 <input type="file" id="file-input" name="file" accept=".pdf,.xlsx,.csv,.docx"
-                                    class="hidden" />
+                                    @error('name') input-error @enderror" class="hidden" />
+                                @error('file-input')
+                                    <div class="label -mt-4 mb-2">
+                                        <span class="label-text-alt text-error">{{ $message }}</span>
+                                    </div>
+                                @enderror
+
 
                                 <div id="file-name-display" class="mt-3 sm:mt-0 text-sm text-gray-700 hidden">
                                     Vald fil: <span id="file-name-text" class="font-medium text-indigo-700"></span>
                                 </div>
                             </div>
-                            <select name="category" id="category"
+                            <select name="category" id="category" required
                                 class="mt-3 sm:mt-0 block w-full sm:w-auto border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                 <option value="" disabled selected>Välj kategori</option>
                                 <option value="yearly-rapport">Årsrapport</option>
@@ -93,6 +99,7 @@
 
     @push('scripts')
         <script>
+            // This will show the selected file name when a file is chosen
             document.addEventListener('DOMContentLoaded', () => {
                 const input = document.getElementById('file-input');
                 const display = document.getElementById('file-name-display');
@@ -102,6 +109,7 @@
 
                 input.addEventListener('change', (e) => {
                     const file = e.target.files[0];
+                    console.log(file);
                     if (file) {
                         nameSpan.textContent = file.name;
                         display.classList.remove('hidden');

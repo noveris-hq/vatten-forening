@@ -17,7 +17,7 @@ class FileController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.upload.index', [
+        return view('admin.document.index', [
             'title' => 'Filuppladdning',
             compact('documents'),
         ]);

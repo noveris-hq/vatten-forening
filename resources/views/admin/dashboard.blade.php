@@ -190,7 +190,7 @@
                         <!-- Documents list / manager -->
                         <div class="space-y-4">
                             <h3 class="text-lg font-semibold">Dokument ({{ $documents->count() }} st)</h3>
-                            <a href="{{ route('admin.upload.index') }}"
+                            <a href="{{ route('admin.document.index') }}"
                                 class="text-sm text-blue-500 hover:underline mt-2 inline-block">Hantera dokument</a>
                             @if ($documents->isEmpty())
                                 <p class="text-sm text-muted-foreground">Inga dokument uppladdade än.</p>
@@ -218,10 +218,10 @@
                                             </div>
                                         </div>
                                         <button class="text-sm text-primary hover:underline">
-                                            <a href="{{ route('admin.upload.download', $doc) }}">Ladda ner</a>
+                                            <a href="{{ route('admin.document.download', $doc) }}">Ladda ner</a>
                                         </button>
 
-                                        <form action="{{ route('admin.upload.destroy', $doc) }}" method="POST"
+                                        <form action="{{ route('admin.document.destroy', $doc) }}" method="POST"
                                             class="inline"
                                             onsubmit="return confirm('Är du säker på att du vill ta bort denna fil?')">
                                             @csrf

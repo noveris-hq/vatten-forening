@@ -25,8 +25,8 @@ Route::prefix('adminportal')->middleware('auth')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/status', [StatusController::class, 'index'])->name('status.index');
     Route::put('/status', [StatusController::class, 'update'])->name('status.update');
-    Route::get('/upload', [FileController::class, 'index'])->name('admin.upload.index');
-    Route::get('/upload/download/{document}', [FileController::class, 'download'])->name('admin.upload.download');
-    Route::delete('/upload/{document}', [FileController::class, 'destroy'])->name('admin.upload.destroy');
-    Route::post('/upload', [FileController::class, 'store'])->name('admin.upload.store');
+    Route::get('/dokument', [FileController::class, 'index'])->name('admin.document.index');
+    Route::get('/dokument/download/{document}', [FileController::class, 'download'])->name('admin.document.download');
+    Route::delete('/dokument/{document}', [FileController::class, 'destroy'])->name('admin.document.destroy');
+    Route::post('/dokument', [FileController::class, 'store'])->name('admin.document.store');
 });

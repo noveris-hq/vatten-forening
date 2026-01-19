@@ -21,15 +21,15 @@
         <div class="bg-white rounded-xl shadow-lg p-8">
             <h3 class="text-2xl font-semibold text-gray-900 mb-6">Skapa konto</h3>
 
-            @if ($errors->any())
-                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <ul class="list-disc list-inside text-sm text-red-800">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            {{-- @if ($errors->any()) --}}
+            {{--     <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg"> --}}
+            {{--         <ul class="list-disc list-inside text-sm text-red-800"> --}}
+            {{--             @foreach ($errors->all() as $error) --}}
+            {{--                 <li>{{ $error }}</li> --}}
+            {{--             @endforeach --}}
+            {{--         </ul> --}}
+            {{--     </div> --}}
+            {{-- @endif --}}
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
