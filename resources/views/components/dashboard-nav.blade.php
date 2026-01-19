@@ -48,7 +48,7 @@
             </a>
             <a href="{{ route('member.documents') }}">
                 <button
-                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none{{ request()->routeIs('member.documents') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.documents') ? 'bg-gray-200/50 border-b-2' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-file-text h-4 w-4">
@@ -73,9 +73,10 @@
                 </button>
             </a>
             @if (auth()->user()->is_admin)
-                <a href="{{ route('admin.dashboard') }}">
-                    <button
-                        class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('admin.dashboard') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                <div x-data="{ hovered: false, open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
+                    <button @mouseenter="hovered = true" @mouseleave="hovered = false"
+                        class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('admin.dashboard') || request()->is('adminportal/*') ? 'bg-gray-200/50 border-b-2' : '' }}"
+                        :class="{ 'bg-teal-50 text-teal-600': open || hovered }">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="lucide lucide-shield-check h-4 w-4">
@@ -83,8 +84,22 @@
                             <path d="m9 12 2 2 4-4"></path>
                         </svg>
                         <span class="hidden sm:inline">Admin</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
                     </button>
-                </a>
+                    <div x-show="open" x-transition
+                        class="absolute top-full left-0 w-48 bg-white border border-gray-300 rounded-sm shadow-lg z-50">
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Driftstatus</a>
+                        <a href="{{ route('nyheter.index') }}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Nyheter</a>
+                        <a href="{{ route('admin.document.index') }}"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Dokument</a>
+                    </div>
+                </div>
             @endif
         </div>
     </div>

@@ -99,144 +99,75 @@
                     </div>
                 </div>
 
-                <!-- Tabs with Alpine.js -->
-                <div x-data="{ activeTab: 'status' }" class="space-y-6">
-                    <!-- Tabs List -->
-                    <div
-                        class="inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground w-full">
-                        <button @click="activeTab = 'status'"
-                            :class="{ 'bg-background shadow-sm text-foreground': activeTab === 'status' }"
-                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v20M2 12h20" />
-                            </svg>
-                            <span class="hidden sm:inline">Driftstatus</span>
-                        </button>
+                 <!-- Inline Status Editor -->
+                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                     <h2 class="text-lg font-semibold mb-4">Redigera Driftstatus</h2>
+                     <form action="{{ route('status.update') }}" method="POST" class="bg-white rounded px-8 pt-6 pb-8 mb-4">
+                         @csrf
+                         @method('PUT')
+                         <!-- Status indicators -->
+                         <div class="space-y-4">
 
-                        <button @click="activeTab = 'news'"
-                            :class="{ 'bg-background text-foreground': activeTab === 'news' }"
-                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8l-5 5v13a2 2 0 0 0 2 2z" />
-                                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-                            </svg>
-                            <span class="hidden sm:inline">Nyheter</span>
-                        </button>
+                             <label class="flex items-center space-x-3 cursor-pointer">
+                                 <input type="radio" @checked($status->status === 'ok') name="status" value="ok"
+                                     class="h-5 w-5 text-green-600 border-gray-300 focus:ring-green-500">
+                                 <div>
+                                     <div class="font-medium text-green-700">Allt fungerar</div>
+                                     <div class="text-sm text-gray-600">Inga kända problem</div>
+                                 </div>
+                             </label>
 
-                        <button @click="activeTab = 'documents'"
-                            :class="{ 'bg-background shadow-sm text-foreground': activeTab === 'documents' }"
-                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <path d="M14 2v6h6" />
-                            </svg>
-                            <span class="hidden sm:inline">Dokument</span>
-                        </button>
-                    </div>
+                             <label class="flex items-center space-x-3 cursor-pointer">
+                                 <input type="radio" @checked($status->status === 'warning') name="status" value="warning"
+                                     class="h-5 w-5 text-amber-600 border-gray-300 focus:ring-amber-500">
+                                 <div>
+                                     <div class="font-medium text-amber-700">Driftsstörning</div>
+                                     <div class="text-sm text-gray-600">Pågående problem som påverkar systemet</div>
+                                 </div>
+                             </label>
 
-                    <!-- Tab Contents -->
-                    <div x-show="activeTab === 'status'" class="bg-card p-6 rounded-xl border border-gray-300">
-                        <!-- Here goes your StatusManager content -->
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-semibold">Nuvarande status</h3>
-                            <div class="p-4 bg-gray-100 rounded-lg">
-                                <p class="font-medium">{{ $status['message'] }}</p>
-                                <p class="text-sm text-muted-foreground mt-2">Uppdaterad: {{ $status->formattedUpdatedAt }}
-                                </p>
-                            </div>
-                            <a href="{{ route('status.index') }}"
-                                class="text-sm text-blue-500 hover:underline mt-2 inline-block">Redigera status</a>
-                            <!-- Add form / manager UI here later -->
-                        </div>
-                    </div>
+                             <label class="flex items-center space-x-3 cursor-pointer">
+                                 <input type="radio" @checked($status->status === 'critical') name="status" value="critical"
+                                     class="h-5 w-5 text-red-600 border-gray-300 focus:ring-red-500">
+                                 <div>
+                                     <div class="font-medium text-red-700">Avbrott</div>
+                                     <div class="text-sm text-gray-600">Kritiskt fel - vattnet är avstängt</div>
+                                 </div>
+                             </label>
 
-                    <div x-show="activeTab === 'news'" class="bg-card p-6 rounded-xl border border-gray-300">
-                        <!-- News list / manager -->
-                        <div class="space-y-6">
-                            <h3 class="text-lg font-semibold">Nyheter ({{ count($news) }} st)</h3>
-                            <a href="{{ route('news.index') }}"
-                                class="text-sm text-blue-500 hover:underline mt-2 inline-block">Hantera nyheter</a>
-                            @foreach ($news as $item)
-                                <div class="border-b pb-4 last:border-0 last:pb-0">
-                                    <div class="flex items-start justify-between">
-                                        <div>
-                                            <h4 class="font-medium">{{ $item['title'] }}</h4>
-                                            @if ($item['isImportant'])
-                                                <span
-                                                    class="inline-flex items-center px-2 py-0.5 mt-1 rounded text-xs font-medium bg-red-100 text-red-800">Viktigt</span>
-                                            @endif
-                                            <p class="text-sm text-muted-foreground mt-1">{{ $item['content'] }}</p>
-                                        </div>
-                                        <span
-                                            class="text-xs text-muted-foreground whitespace-nowrap">{{ $item['created_at'] }}</span>
-                                    </div>
-                                </div>
-                            @endforeach
-                            <!-- Add create/edit form here -->
-                        </div>
-                    </div>
+                         </div>
 
+                         <div class="mt-8">
+                             <label class="block text-sm font-medium text-gray-700 mb-1" for="message">
+                                 Statusmeddelande
+                             </label>
+                             <textarea name="message" id="message" rows="4"
+                                 class="shadow appearance-none border rounded border-gray-200 w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+                                 required>{{ old('content', $status->message) }}</textarea>
+                             @error('content')
+                                 <p class="text-red-500 text-xs italic">{{ $status->message }}</p>
+                             @enderror
 
-                    @php
-                        $translation = $documents;
-                        $translation = [
-                            'yearly-rapport' => 'Årsrapport',
-                            'protocoll' => 'Protokoll',
-                            'invoices' => 'Faktura',
-                        ];
-                    @endphp
+                             @error('message')
+                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                             @enderror
+                             <p class="mt-2 text-xs text-gray-500">
+                                 Detta meddelande visas på startsidan för alla besökare.
+                             </p>
+                         </div>
 
-                    <div x-show="activeTab === 'documents'" class="bg-card p-6 rounded-xl border border-gray-300">
-                        <!-- Documents list / manager -->
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-semibold">Dokument ({{ $documents->count() }} st)</h3>
-                            <a href="{{ route('admin.document.index') }}"
-                                class="text-sm text-blue-500 hover:underline mt-2 inline-block">Hantera dokument</a>
-                            @if ($documents->isEmpty())
-                                <p class="text-sm text-muted-foreground">Inga dokument uppladdade än.</p>
-                            @else
-                                @foreach ($documents as $doc)
-                                    <div class="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50">
-                                        <div class="flex items-center gap-3">
-                                            <svg class="h-5 w-5 text-muted-foreground" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2">
-                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                                <path d="M14 2v6h6" />
-                                            </svg>
-                                            <div>
-                                                <p class="font-medium">{{ $doc->filename }}</p>
-                                                <p class="text-sm text-muted-foreground mt-0.5">
-                                                    Uppladdad av: {{ $doc->uploader->name }}
-                                                </p>
-                                                <div class="flex gap-2 text-xs text-muted-foreground mt-0.5">
-                                                    <span
-                                                        class="px-1.5 py-0.5 rounded bg-gray-200">{{ $translation[$doc->category] ?? 'Okänd kategori' }}</span>
-                                                    {{-- <span>År {{ $doc['year'] }}</span> --}}
-                                                    {{-- <span>{{ $doc->getFormattedSizeAttribute }} KB</span> --}}
-                                                    <span>Uppladdad {{ $doc->created_at->format('Y-m-d H:i') }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="text-sm text-primary hover:underline">
-                                            <a href="{{ route('admin.document.download', $doc) }}">Ladda ner</a>
-                                        </button>
+                         <button type="submit"
+                             class="mt-6 inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent hover:cursor-pointer rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                             Spara ändringar
+                         </button>
 
-                                        <form action="{{ route('admin.document.destroy', $doc) }}" method="POST"
-                                            class="inline"
-                                            onsubmit="return confirm('Är du säker på att du vill ta bort denna fil?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-900">
-                                                Ta bort
-                                            </button>
-                                        </form>
-                                    </div>
-                                @endforeach
-                            @endif
-                            <!-- Add upload / edit form here -->
-                        </div>
-                    </div>
-                </div>
+                     </form>
+                     <!-- Last updated -->
+                     <div class="mt-6 text-sm text-gray-500">
+                         Senast uppdaterad: {{ $status->formattedUpdatedAt }}
+                     </div>
+
+                 </div>
             </div>
         </main>
 

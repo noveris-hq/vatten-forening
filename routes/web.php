@@ -21,7 +21,7 @@ Route::prefix('medlemsportal')->middleware('auth')->group(function () {
 
 // Admin portal
 Route::prefix('adminportal')->middleware('auth')->group(function () {
-    Route::resource('admin/news', NewsController::class);
+    Route::resource('nyheter', NewsController::class);
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/status', [StatusController::class, 'index'])->name('status.index');
     Route::put('/status', [StatusController::class, 'update'])->name('status.update');

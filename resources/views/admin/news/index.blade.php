@@ -12,7 +12,8 @@
         @endif
 
         <div class="mb-4">
-            <a href="{{ route('news.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('nyheter.create') }}"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Skapa ny nyhet
             </a>
         </div>
@@ -45,9 +46,9 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-b">
                                 {{ $item->is_important ? 'Ja' : 'Nej' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium border-b">
-                                <a href="{{ route('news.edit', $item->id) }}"
+                                <a href="{{ route('nyheter.edit', $item->id) }}"
                                     class="text-indigo-600 hover:text-indigo-900 mr-4">Redigera</a>
-                                <form action="{{ route('news.destroy', $item->id) }}" method="POST" class="inline">
+                                <form action="{{ route('nyheter.destroy', $item->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
