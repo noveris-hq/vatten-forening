@@ -24,10 +24,9 @@ Route::prefix('adminportal')->middleware('auth')->group(function () {
     Route::resource('admin/news', NewsController::class);
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/status', [StatusController::class, 'index'])->name('status.index');
-    /* Route::get('/status/edit', [StatusController::class, 'edit'])->name('status.edit'); */
     Route::put('/status', [StatusController::class, 'update'])->name('status.update');
     Route::get('/upload', [FileController::class, 'index'])->name('admin.upload.index');
+    Route::get('/upload/download/{document}', [FileController::class, 'download'])->name('admin.upload.download');
+    Route::delete('/upload/{document}', [FileController::class, 'destroy'])->name('admin.upload.destroy');
     Route::post('/upload', [FileController::class, 'store'])->name('admin.upload.store');
 });
-
-/* Route::post('/kontakt', [App\Http\Controllers\ContactController::class, 'submit']) *100*     ->name('contact.submit'); */

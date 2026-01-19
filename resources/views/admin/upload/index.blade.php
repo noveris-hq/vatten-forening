@@ -46,6 +46,13 @@
                                     Vald fil: <span id="file-name-text" class="font-medium text-indigo-700"></span>
                                 </div>
                             </div>
+                            <select name="category" id="category"
+                                class="mt-3 sm:mt-0 block w-full sm:w-auto border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="" disabled selected>Välj kategori</option>
+                                <option value="yearly-rapport">Årsrapport</option>
+                                <option value="protocoll">Protokoll</option>
+                                <option value="invoices">Fakturor</option>
+                            </select>
 
                             <p class="text-xs text-gray-500">
                                 Tillåtna format: PDF, XLSX, CSV, DOCX • Max 10 MB

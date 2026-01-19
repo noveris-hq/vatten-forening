@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Document;
 use App\Models\News;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class AdminDashboardController extends Controller
@@ -33,29 +35,7 @@ class AdminDashboardController extends Controller
 
         $news = News::orderBy('created_at', 'desc')->get();
 
-        $documents = [
-            [
-                'id' => '1',
-                'name' => 'Stadgar för Västra Karbäckens vattenförening',
-                'type' => 'stadgar',
-                'year' => '2024',
-                'uploadedAt' => '2024-03-20',
-            ],
-            [
-                'id' => '2',
-                'name' => 'Årsmötesprotokoll 2025',
-                'type' => 'protokoll',
-                'year' => '2025',
-                'uploadedAt' => '2025-03-18',
-            ],
-            [
-                'id' => '3',
-                'name' => 'Årsmötesprotokoll 2024',
-                'type' => 'protokoll',
-                'year' => '2024',
-                'uploadedAt' => '2024-03-22',
-            ],
-        ];
+        $documents = Document::latest()->get();
 
         $memberCount = User::where('is_admin', '0')->count();
 

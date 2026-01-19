@@ -176,32 +176,63 @@
                         </div>
                     </div>
 
+
+                    @php
+                        $translation = $documents;
+                        $translation = [
+                            'yearly-rapport' => 'Årsrapport',
+                            'protocoll' => 'Protokoll',
+                            'invoices' => 'Faktura',
+                        ];
+                    @endphp
+
                     <div x-show="activeTab === 'documents'" class="bg-card p-6 rounded-xl border border-gray-300">
                         <!-- Documents list / manager -->
                         <div class="space-y-4">
-                            <h3 class="text-lg font-semibold">Dokument ({{ count($documents) }} st)</h3>
+                            <h3 class="text-lg font-semibold">Dokument ({{ $documents->count() }} st)</h3>
                             <a href="{{ route('admin.upload.index') }}"
                                 class="text-sm text-blue-500 hover:underline mt-2 inline-block">Hantera dokument</a>
-                            @foreach ($documents as $doc)
-                                <div class="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50">
-                                    <div class="flex items-center gap-3">
-                                        <svg class="h-5 w-5 text-muted-foreground" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2">
-                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                            <path d="M14 2v6h6" />
-                                        </svg>
-                                        <div>
-                                            <p class="font-medium">{{ $doc['name'] }}</p>
-                                            <div class="flex gap-2 text-xs text-muted-foreground mt-0.5">
-                                                <span class="px-1.5 py-0.5 rounded bg-muted">{{ $doc['type'] }}</span>
-                                                <span>År {{ $doc['year'] }}</span>
-                                                <span>Uppladdad {{ $doc['uploadedAt'] }}</span>
+                            @if ($documents->isEmpty())
+                                <p class="text-sm text-muted-foreground">Inga dokument uppladdade än.</p>
+                            @else
+                                @foreach ($documents as $doc)
+                                    <div class="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50">
+                                        <div class="flex items-center gap-3">
+                                            <svg class="h-5 w-5 text-muted-foreground" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                                <path d="M14 2v6h6" />
+                                            </svg>
+                                            <div>
+                                                <p class="font-medium">{{ $doc->filename }}</p>
+                                                <p class="text-sm text-muted-foreground mt-0.5">
+                                                    Uppladdad av: {{ $doc->uploader->name }}
+                                                </p>
+                                                <div class="flex gap-2 text-xs text-muted-foreground mt-0.5">
+                                                    <span
+                                                        class="px-1.5 py-0.5 rounded bg-gray-200">{{ $translation[$doc->category] }}</span>
+                                                    {{-- <span>År {{ $doc['year'] }}</span> --}}
+                                                    {{-- <span>{{ $doc->getFormattedSizeAttribute }} KB</span> --}}
+                                                    <span>Uppladdad {{ $doc->created_at->format('Y-m-d H:i') }}</span>
+                                                </div>
                                             </div>
                                         </div>
+                                        <button class="text-sm text-primary hover:underline">
+                                            <a href="{{ route('admin.upload.download', $doc) }}">Ladda ner</a>
+                                        </button>
+
+                                        <form action="{{ route('admin.upload.destroy', $doc) }}" method="POST"
+                                            class="inline"
+                                            onsubmit="return confirm('Är du säker på att du vill ta bort denna fil?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-600 hover:text-red-900">
+                                                Ta bort
+                                            </button>
+                                        </form>
                                     </div>
-                                    <button class="text-sm text-primary hover:underline">Redigera</button>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                             <!-- Add upload / edit form here -->
                         </div>
                     </div>

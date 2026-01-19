@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Document;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,8 +13,13 @@ class FileController extends Controller
 {
     public function index(): View
     {
+        $documents = Document::with('user')
+            ->latest()
+            ->paginate(10);
+
         return view('admin.upload.index', [
             'title' => 'Filuppladdning',
+            compact('documents'),
         ]);
     }
 
@@ -21,22 +27,59 @@ class FileController extends Controller
     {
         $request->validate([
             'file' => 'required|mimes:pdf,xlx,csv,docx|max:10240', // Max size 10MB
+            'category' => 'string|max:255',
         ]);
 
         $fileName = $request->file('file')->getClientOriginalName();
 
         $file = $request->file('file');
         $path = Storage::disk('local')->putFileAs(
-            'uploads',
+            'documents',
             $file,
             $fileName
         );
-        $size = Storage::size($path);
-        $mime = Storage::mimeType($path);
-        /* dd($fileName, $mime, $path, $size); */
+
+        $category = $request->input('category');
+
+        Document::create([
+            'title' => $fileName,
+            'filename' => $fileName,
+            'category' => $category,
+            'path' => $path,
+            'mime_type' => Storage::mimeType($path),
+            'size' => Storage::size($path),
+            'uploaded_by' => auth()->id(),
+            'description' => null,
+            /* 'members_only' => true, */
+        ]);
 
         return redirect()
-            ->route('admin.upload.index', compact('fileName', 'mime', 'path', 'size', 'file'))
+            ->route('admin.dashboard', compact('fileName'))
             ->with('success', 'Fil uppladdad: '.$fileName);
+    }
+
+    public function download(Document $document)
+    {
+        // Check if file exists
+        if (! Storage::disk('local')->exists($document->path)) {
+            abort(404, 'File not found');
+        }
+
+        return Storage::disk('local')->download($document->path, $document->filename);
+    }
+
+    public function destroy(Document $document): RedirectResponse
+    {
+        // Delete file from storage
+        if (Storage::disk('local')->exists($document->path)) {
+            Storage::disk('local')->delete($document->path);
+        }
+
+        // Delete from database
+        $document->delete();
+
+        return redirect()
+            ->route('admin.dashboard')
+            ->with('success', 'File deleted successfully!');
     }
 }
