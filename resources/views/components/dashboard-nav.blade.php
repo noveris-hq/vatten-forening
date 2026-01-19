@@ -46,7 +46,7 @@
                     <span class="hidden sm:inline">Översikt</span>
                 </button>
             </a>
-            <a href="#">
+            <a href="{{ route('member.documents') }}">
                 <button
                     class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none{{ request()->routeIs('member.documents') ? 'bg-gray-200/50 border-b-2' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

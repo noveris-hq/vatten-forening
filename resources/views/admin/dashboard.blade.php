@@ -180,6 +180,8 @@
                         <!-- Documents list / manager -->
                         <div class="space-y-4">
                             <h3 class="text-lg font-semibold">Dokument ({{ count($documents) }} st)</h3>
+                            <a href="{{ route('admin.upload.index') }}"
+                                class="text-sm text-blue-500 hover:underline mt-2 inline-block">Hantera dokument</a>
                             @foreach ($documents as $doc)
                                 <div class="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50">
                                     <div class="flex items-center gap-3">

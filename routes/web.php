@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Member\DashboardController;
@@ -25,6 +26,8 @@ Route::prefix('adminportal')->middleware('auth')->group(function () {
     Route::get('/status', [StatusController::class, 'index'])->name('status.index');
     /* Route::get('/status/edit', [StatusController::class, 'edit'])->name('status.edit'); */
     Route::put('/status', [StatusController::class, 'update'])->name('status.update');
+    Route::get('/upload', [FileController::class, 'index'])->name('admin.upload.index');
+    Route::post('/upload', [FileController::class, 'store'])->name('admin.upload.store');
 });
 
 /* Route::post('/kontakt', [App\Http\Controllers\ContactController::class, 'submit']) *100*     ->name('contact.submit'); */

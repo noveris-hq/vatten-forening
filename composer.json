@@ -17,7 +17,7 @@
         "laravel/fortify": "^1.33",
         "laravel/framework": "^12.46",
         "laravel/tinker": "^2.11.0",
-        "livewire/livewire": "^3.7.3",
+        "livewire/livewire": "^4.0",
         "spatie/laravel-permission": "^6.24",
         "statamic/cms": "^5.71"
     },

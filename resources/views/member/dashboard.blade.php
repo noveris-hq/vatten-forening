@@ -10,7 +10,7 @@
                 <h3 class="text-lg font-semibold mb-4">Livewire Test</h3>
                 <livewire:test-counter />
             </div>
-            {{-- <x-navigation /> --}}
+            <x-navigation />
         </div>
     </main>
 @endsection

@@ -15,6 +15,18 @@
 
             <!-- Documents Grid -->
             <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                @if (auth()->user()->is_admin)
+                    <a href="{{ route('admin.upload.index') }}"
+                        class="rounded-lg border border-dashed border-gray-300 bg-card text-card-foreground shadow-sm flex items-center justify-center p-6 hover:bg-gray-50">
+                        <div class="text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary mb-2" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 4v16m8-8H4" />
+                            </svg>
+                            <span class="font-semibold text-lg text-primary">Ladda upp nytt dokument</span>
+                        </div>
+                    </a>
+                @endif
                 <!-- Example Document Cards -->
                 <div class="rounded-lg border border-gray-300 bg-card text-card-foreground shadow-sm">
                     <div class="p-6">

@@ -44,10 +44,10 @@
             </div>
         </section>
 
-        <section id="status" class="py-8 bg-gray-50">
+        <section id="status" class="py-8 bg-gray-50 scroll-mt-16">
             <div class="container mx-auto px-4 max-w-2xl">
                 @if ($page->system_status)
-                    <x-status-banner :status="$status"/>
+                    <x-status-banner :status="$status" />
                 @endif
             </div>
         </section>
@@ -72,7 +72,7 @@
             </div>
         </section>
 
-        <section id="om-oss" class="py-16 md:py-24 bg-gray-50">
+        <section id="om-oss" class="py-16 md:py-24 bg-gray-50 scroll-mt-16">
             <div class="container mx-auto px-4">
                 <div class="grid gap-12 lg:grid-cols-2 items-center">
                     <div>
