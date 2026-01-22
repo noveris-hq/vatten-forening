@@ -15,3 +15,7 @@
 .hero-overlay {
     background: var(--hero-overlay);
 }
+
+[x-cloak] {
+    display: none !important;
+}

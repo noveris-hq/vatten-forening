@@ -34,59 +34,40 @@
                                             <polyline points="12 6 12 12 16 14"></polyline>
                                         </svg>2026-03-31</span></div>
                             </div>
-                            <div
-                                class="p-4 rounded-lg border border-green-200 bg-green-50 dark:bg-green-900 dark:border-green-700">
-                                <div class="flex items-center gap-2 text-green-700 dark:text-green-100">
+                            <div class="p-4 rounded-lg border border-green-200 bg-green-50">
+                                <div class="flex items-center gap-2 text-green-900">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round"
-                                        class="lucide lucide-circle-check-big h-5 w-5 text-green-600 dark:text-green-200">
+                                        class="lucide lucide-circle-check-big h-5 w-5 text-green-900 ">
                                         <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                                         <path d="m9 11 3 3L22 4"></path>
                                     </svg>
                                     <span class="font-medium">Senaste betalning</span>
                                 </div>
-                                <p class="mt-1 text-sm text-green-600 dark:text-green-300">2025-03-15 - Årsavgift 2025</p>
+                                <p class="mt-1 text-sm text-green-600">2025-03-15 - Årsavgift 2025</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="px-6 pb-6 space-y-6 bg-white border border-gray-200 rounded-lg">
                         <!-- Payment methods -->
-                        <div class="p-6 pb-3">
-                            <h3 class="text-lg font-semibold">Betalningsinformation</h3>
+                        <div class="pt-6 pb-3">
+                            <h3 class="text-2xl leading-none tracking-tight font-semibold">Betalningsinformation</h3>
                             <p class="text-sm text-gray-700 mt-1">
                                 Så här betalar du din avgift
                             </p>
                         </div>
 
                         <div>
-                            <!-- Bankgiro -->
-                            <div class="mb-5 p-5 rounded-lg border border-gray-200">
-                                <h4 class="font-semibold flex items-center gap-2 mb-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                                        <path d="M7 8h10M7 12h10" />
-                                    </svg>
-                                    Bankgiro
-                                </h4>
-                                <p class="text-2xl font-mono font-bold tracking-wide text-blue-900/90">
-                                    {{ $bankgiro ?? '123-4567' }}
-                                </p>
-                                <p class="text-sm text-gray-700 mt-2">
-                                    Ange din fastighetsbeteckning som meddelande
-                                </p>
-                            </div>
-
                             <!-- Swish -->
                             <div
                                 class="p-5 rounded-lg border border-gray-200 bg-background/50 hover:bg-background transition-colors">
                                 <h4 class="font-semibold flex items-center gap-2 mb-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
-                                        <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z" />
+                                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                                        <path d="M7 8h10M7 12h10" />
                                     </svg>
                                     Swish
                                 </h4>

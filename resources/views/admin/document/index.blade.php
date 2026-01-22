@@ -17,7 +17,7 @@
                 </div>
             @endsession
 
-            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden">
                 <div class="p-8">
 
                     <div class="mb-8">
@@ -30,11 +30,14 @@
                         <div class="space-y-6">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4">
                                 <label for="file-input"
-                                    class="hover:cursor-pointer inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium shadow-md hover:bg-indigo-700 hover:shadow-lg transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
-                                        </path>
+                                    class="hover:cursor-pointer inline-flex items-center px-4 py-2 bg-blue-900/90 text-white rounded-lg font-medium  hover:bg-indigo-700 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                                        class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="lucide lucide-upload h-8 w-8 mx-auto text-muted-foreground mb-2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" x2="12" y1="3" y2="15"></line>
                                     </svg>
                                     Välj fil
                                 </label>
@@ -58,6 +61,14 @@
                                 <option value="yearly-rapport">Årsrapport</option>
                                 <option value="protocoll">Protokoll</option>
                                 <option value="invoices">Fakturor</option>
+                            </select>
+
+                            <select name="year" id="year" @error('year') input-error @enderror"
+                                class="mt-3 sm:mt-0 block w-full sm:w-auto border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                                <option value="" disabled selected>Välj år</option>
+                                @for ($i = date('Y'); $i >= 2000; $i--)
+                                    <option value="{{ $i }}">{{ $i }}</option>
+                                @endfor
                             </select>
 
                             {{-- @error('category') --}}
@@ -105,7 +116,7 @@
                             </div>
 
                             <button type="submit"
-                                class="hover:cursor-pointer inline-flex items-center px-8 py-3 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="hover:cursor-pointer inline-flex items-center px-6 py-2 bg-blue-900/90 text-white rounded-lg font-semibold  hover:bg-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
                                 Ladda upp
                             </button>
                         </div>
@@ -113,6 +124,11 @@
                 </div>
             </div>
         </div>
+
+        <h1 class="text-2xl font-bold text-gray-900 mt-12 mb-6">Uppladdade dokument</h1>
+        <x-documents-table :groupedDocuments="$groupedDocuments" />
+
+
     </div>
 
     @push('scripts')

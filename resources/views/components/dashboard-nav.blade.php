@@ -1,15 +1,18 @@
-<header class="border-b border-gray-300 bg-white sticky top-0 z-50">
+<header class="border-b border-gray-200 bg-white sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
-                {{-- <a href="/"><button --}}
-                {{--         class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-2"><svg --}}
-                {{--             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" --}}
-                {{--             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" --}}
-                {{--             stroke-linejoin="round" class="lucide lucide-arrow-left h-4 w-4"> --}}
-                {{--             <path d="m12 19-7-7 7-7"></path> --}}
-                {{--             <path d="M19 12H5"></path> --}}
-                {{--         </svg>Tillbaka</button></a> --}}
+                <a href="/"
+                    class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
+                    aria-label="Västra Karbäckens vattenförening - Hem">
+                    <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
+                        <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
+                    </div>
+                    <span class="font-semibold text-gray-900 hidden sm:block">
+                        Västra Karbäckens vattenförening
+                    </span>
+                </a>
+
                 <div class="flex items-center gap-2">
                     @if (!auth()->user()->is_admin)
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -22,21 +25,34 @@
                     @endif
                 </div>
             </div>
-            <div class="flex items-center gap-2"><span class="text-sm text-muted-foreground">Inloggad som:</span><span
+            <div class="flex items-center gap-2"><span class="text-sm text-gray-700">Inloggad som:</span><span
                     class="text-sm font-medium text-green-600">{{ auth()->user()->email }}</span>
                 @if (auth()->user()->is_admin)
-                    - <span class="text-sm font-semibold text-green-600">Admin</span>
+                    - <span class="text-sm font-semibold text-gray-600">Admin</span>
                 @endif
             </div>
+            <form method="POST" action="/logout" class="inline-flex items-center ml-3">
+
+                @csrf
+                <button type="submit"
+                    class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-gray-300 bg-transparent hover:bg-teal-50 hover:text-teal-600 hover:cursor-pointer h-9 rounded-md px-3 gap-2"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-log-out h-4 w-4">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" x2="9" y1="12" y2="12"></line>
+                    </svg><span class="hidden sm:inline">Logga ut</span></button>
+            </form>
         </div>
     </div>
 </header>
-<nav class="border-b border-gray-300 mb-8 bg-gray-50 sticky top-16 z-40">
+<nav class="border-b border-gray-200 mb-8 bg-gray-50 sticky top-16 z-40">
     <div class="container mx-auto px-4">
         <div class="flex gap-1">
             <a href="{{ route('member.dashboard') }}">
                 <button
-                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teatl-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.dashboard') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.dashboard') ? 'bg-gray-200/50 border-b-2' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-bell h-4 w-4">
@@ -73,31 +89,49 @@
                 </button>
             </a>
             @if (auth()->user()->is_admin)
-                <div x-data="{ hovered: false, open: false }" @mouseenter="open = true" @mouseleave="open = false" class="relative">
-                    <button @mouseenter="hovered = true" @mouseleave="hovered = false"
-                        class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('admin.dashboard') || request()->is('adminportal/*') ? 'bg-gray-200/50 border-b-2' : '' }}"
-                        :class="{ 'bg-teal-50 text-teal-600': open || hovered }">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-shield-check h-4 w-4">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <path d="m9 12 2 2 4-4"></path>
-                        </svg>
-                        <span class="hidden sm:inline">Admin</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-chevron-down h-4 w-4">
-                            <path d="m6 9 6 6 6-6"></path>
-                        </svg>
-                    </button>
-                    <div x-show="open" x-transition
-                        class="absolute top-full left-0 w-48 bg-white border border-gray-300 rounded-sm shadow-lg z-50">
-                        <a href="{{ route('admin.dashboard') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Driftstatus</a>
-                        <a href="{{ route('nyheter.index') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Nyheter</a>
-                        <a href="{{ route('admin.document.index') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Dokument</a>
+                <div class="flex justify-center">
+                    <div x-data="{
+                        open: false,
+                        toggle() {
+                            if (this.open) {
+                                return this.close()
+                            }
+
+                            this.$refs.button.focus()
+
+                            this.open = true
+                        },
+                        close(focusAfter) {
+                            if (!this.open) return
+
+                            this.open = false
+
+                            focusAfter && focusAfter.focus()
+                        }
+                    }" x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-id="['dropdown-button']" class="relative">
+                        <button x-ref="button" x-on:click="toggle()" :aria-expanded="open"
+                            :aria-controls="$id('dropdown-button')" type="button"
+                            class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('admin.dashboard') || request()->is('adminportal/*') ? 'bg-gray-200/50 border-b-2' : '' }}"
+                            <span>Admin</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                class="size-4">
+                                <path fill-rule="evenodd"
+                                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div x-ref="panel" x-show="open" x-transition.origin.top.left
+                            x-on:click.outside="close($refs.button)" :id="$id('dropdown-button')" x-cloak
+                            class="absolute left-0 min-w-48 rounded-lg shadow-sm mt-2 z-10 origin-top-left bg-white p-1.5 outline-none border border-gray-200">
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Driftstatus</a>
+                            <a href="{{ route('nyheter.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Nyheter</a>
+                            <a href="{{ route('admin.document.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Dokument</a>
+                        </div>
                     </div>
                 </div>
             @endif

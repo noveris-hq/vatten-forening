@@ -68,8 +68,8 @@
                         </div>
 
                         <button type="submit"
-                            class="mt-6 inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent hover:cursor-pointer rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            Spara ändringar
+                            class="mt-6 inline-flex items-center px-4 py-2 bg-blue-900/90 border border-transparent hover:cursor-pointer rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            Spara ändringarsdasdas
                         </button>
 
                     </form>

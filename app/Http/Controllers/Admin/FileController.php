@@ -13,14 +13,29 @@ class FileController extends Controller
 {
     public function index(): View
     {
-        $documents = Document::with('user')
-            ->latest()
-            ->paginate(10);
+        $documents = Document::latest()->get();
 
-        return view('admin.document.index', [
-            'title' => 'Filuppladdning',
-            compact('documents'),
-        ]);
+        $groupedDocuments = $documents
+            ->groupBy('year')
+            ->sortKeysDesc()
+            ->map(function ($yearGroup) {
+                return $yearGroup->sortByDesc('created_at');
+            });
+
+        $sortedYears = Document::select('year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
+
+        return view(
+            'admin.document.index',
+            ['title' => 'Admin - Dokumenthantering'],
+            compact(
+                'groupedDocuments',
+                'documents',
+                'sortedYears',
+            )
+        );
     }
 
     public function store(Request $request): RedirectResponse
@@ -28,11 +43,12 @@ class FileController extends Controller
         $request->validate([
             'file' => 'required|mimes:pdf,xlx,csv,docx|max:10240', // Max size 10MB
             'category' => 'required|string|max:255',
+            'year' => 'required|integer',
         ], [
             'file.required' => 'Vänligen välj en fil att ladda upp.',
             'category.required' => 'Vänligen ange en kategori.',
+            'year.required' => 'Vänligen ange ett årtal för detta dokument.',
         ]);
-        /* dd($request); */
 
         $fileName = $request->file('file')->getClientOriginalName();
 
@@ -42,6 +58,8 @@ class FileController extends Controller
             $file,
             $fileName
         );
+
+        $year = $request->input('year');
 
         $category = $request->input('category');
 
@@ -53,8 +71,7 @@ class FileController extends Controller
             'mime_type' => Storage::mimeType($path),
             'size' => Storage::size($path),
             'uploaded_by' => auth()->id(),
-            'description' => null,
-            /* 'members_only' => true, */
+            'year' => $year,
         ]);
 
         notify()

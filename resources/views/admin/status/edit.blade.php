@@ -79,8 +79,8 @@
                         Avbryt
                     </a>
                     <button type="submit"
-                        class="inline-flex items-center px-5 py-2.5 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        Spara ändringar
+                        class="inline-flex items-center px-5 py-2.5 bg-blue-900/90 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        Spara ändringarsdasdasddddddd
                     </button>
                 </div>
 

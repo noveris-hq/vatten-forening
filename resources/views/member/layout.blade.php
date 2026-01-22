@@ -10,8 +10,10 @@
     @vite(['resources/css/site.css', 'resources/js/site.js'])
 </head>
 
-<body class="min-h-screen flex flex-col bg-gray-50">
-    @include('partials.navbar')
+<body class="min-h-screen flex flex-col bg-slate-50">
+    @if (!auth()->check())
+        @include('partials.navbar')
+    @endif
     @yield('content')
     @livewireScripts
 </body>

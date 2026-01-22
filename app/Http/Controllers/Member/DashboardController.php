@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Models\Document;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class DashboardController extends Controller
 
         $latestNews = News::orderBy('date', 'desc')->take(3)->get();
         $importantNews = News::where('is_important', true)->orderBy('date', 'desc')->first();
+        $documents = Document::orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('member.dashboard', compact('user', 'balance', 'latestNews', 'importantNews'), [
+        return view('member.dashboard', compact('documents', 'user', 'balance', 'latestNews', 'importantNews'), [
             'title' => 'Medlemsportal',
         ]);
     }

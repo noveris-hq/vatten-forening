@@ -19,11 +19,10 @@ class Document extends Model
         'mime_type',
         'size',
         'uploaded_by',
-        'members_only',
+        'year',
     ];
 
     protected $casts = [
-        'members_only' => 'boolean',
         'size' => 'integer',
     ];
 

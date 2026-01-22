@@ -11,8 +11,15 @@ class DocumentController extends Controller
     {
         $documents = Document::latest()->get();
 
+        $groupedDocuments = $documents
+            ->groupBy('year')
+            ->sortKeysDesc()
+            ->map(function ($yearGroup) {
+                return $yearGroup->sortByDesc('created_at');
+            });
+
         return view('member.documents', [
             'title' => 'Medlemsportal - Dokument',
-        ], compact('documents'));
+        ], compact('documents', 'groupedDocuments'));
     }
 }

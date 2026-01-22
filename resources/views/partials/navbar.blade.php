@@ -1,4 +1,4 @@
-<header x-data="{ isMenuOpen: false }" class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+<header x-data="{ isMenuOpen: false }" class="sticky top-0 z-50 bg-white border-b border-gray-200">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-16">
             <a href="/"
@@ -7,59 +7,24 @@
                 <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
                     <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
                 </div>
-                <span class="font-semibold text-gray-900 hidden sm:block">
+                <span class="font-semibold text-lg text-gray-900 hidden sm:block">
                     Västra Karbäckens vattenförening
                 </span>
             </a>
 
-            {{-- !TODO: add a auth check for removing om oss, status, kontakt when user is logged in
-                {{-- it should only show logout, min sida and Inloggad som:
-                {{-- medlem@exempel.se  --}}
-
             <nav class="hidden md:flex items-center gap-1" aria-label="Huvudnavigering">
                 <a href="#om-oss"
-                    class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
+                    class="px-4 py-2 font-medium text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
                     Om oss
                 </a>
-
                 <a href="#status"
-                    class="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
+                    class="px-4 py-2 font-medium text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
                     Driftstatus
                 </a>
-
-                @if (auth()->check() && auth()->user()->is_admin)
-                    <a href="{{ route('admin.dashboard') }}"
-                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Adminpanel
-                    </a>
-                    <form method="POST" action="/logout" class="inline-flex items-center ml-3">
-
-                        @csrf
-                        <button type="submit" class="items-center" title="Logga ut">
-                            {{--     Logga ut --}}
-                            <x-ionicon-log-out-outline
-                                class="w-8
-                            h-8 text-gray-500 hover:cursor-pointer" />
-                        </button>
-                    </form>
-                @elseif (auth()->check())
-                    <a href="{{ route('member.dashboard') }}"
-                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Medlemsportal
-                    </a>
-                    <form method="POST" action="/logout" class="inline-flex items-center ml-3">
-                        @csrf
-                        <button type="submit" title="Logga ut">
-                            {{--     Logga ut --}}
-                            <x-ionicon-log-out-outline class="w-8 h-8 text-gray-500 hover:cursor-pointer" />
-                        </button>
-                    </form>
-                @else
-                    <a href="/login"
-                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Logga in
-                    </a>
-                @endif
+                <a href="/login"
+                    class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Logga in
+                </a>
             </nav>
 
             {{-- Mobile Menu Button --}}

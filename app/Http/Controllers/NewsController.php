@@ -50,7 +50,7 @@ class NewsController extends Controller
             ->title('Nyhet skapad!')
             ->send();
 
-        return redirect()->route('news.index');
+        return redirect()->route('nyheter.index');
     }
 
     /**
@@ -93,7 +93,7 @@ class NewsController extends Controller
             ->title('Nyhet updaterad!')
             ->send();
 
-        return redirect()->route('news.index');
+        return redirect()->route('nyheter.index');
     }
 
     /**
