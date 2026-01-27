@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class DashboardController extends Controller
+final class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
         $latestNews = News::orderBy('date', 'desc')->take(3)->get();
         $importantNews = News::where('is_important', true)->orderBy('date', 'desc')->first();
-        $documents = Document::orderBy('created_at', 'desc')->take(5)->get();
+        $documents = Document::orderBy('created_at', 'desc')->take(3)->get();
 
         return view('member.dashboard', compact('documents', 'user', 'balance', 'latestNews', 'importantNews'), [
             'title' => 'Medlemsportal',

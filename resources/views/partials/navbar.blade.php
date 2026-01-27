@@ -3,12 +3,12 @@
         <div class="flex items-center justify-between h-16">
             <a href="/"
                 class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
-                aria-label="Västra Karbäckens vattenförening - Hem">
+                aria-label="Östra Karbäckens vattenförening - Hem">
                 <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
                     <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
                 </div>
                 <span class="font-semibold text-lg text-gray-900 hidden sm:block">
-                    Västra Karbäckens vattenförening
+                    Östra Karbäckens vattenförening
                 </span>
             </a>
 

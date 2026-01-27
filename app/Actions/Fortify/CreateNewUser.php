@@ -45,7 +45,7 @@ class CreateNewUser implements CreatesNewUsers
             'postal_code' => $input['postal_code'],
             'city' => $input['city'],
             'password' => Hash::make($input['password']),
-            'membership_status' => 'pending', // Requires approval
+            'payment_status' => 'unpaid',
         ]);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class AdminNewsController extends Controller
+final class AdminNewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,13 @@ class AdminNewsController extends Controller
     {
         $news = News::orderBy('date', 'desc')->paginate(10);
 
-        return view('admin.news.index', [
-            'title' => 'Nyheter',
-        ], compact('news'));
+        return view(
+            'admin.news.index',
+            [
+                'title' => 'Nyheter',
+            ],
+            compact('news'),
+        );
     }
 
     /**
@@ -46,10 +50,7 @@ class AdminNewsController extends Controller
 
         News::create($request->all());
 
-        notify()
-            ->success()
-            ->title('Nyhet skapad!')
-            ->send();
+        notify()->success()->title('Nyhet skapad!')->send();
 
         return redirect()->route('nyheter.index');
     }
@@ -69,9 +70,13 @@ class AdminNewsController extends Controller
     {
         $news = News::findOrFail($id);
 
-        return view('admin.news.edit', [
-            'title' => 'Redigera nyhet',
-        ], compact('news'));
+        return view(
+            'admin.news.edit',
+            [
+                'title' => 'Redigera nyhet',
+            ],
+            compact('news'),
+        );
     }
 
     /**
@@ -89,10 +94,7 @@ class AdminNewsController extends Controller
         $news = News::findOrFail($id);
         $news->update($request->all());
 
-        notify()
-            ->success()
-            ->title('Nyhet updaterad!')
-            ->send();
+        notify()->success()->title('Nyhet updaterad!')->send();
 
         return redirect()->route('nyheter.index');
     }
@@ -105,10 +107,7 @@ class AdminNewsController extends Controller
         $news = News::findOrFail($id);
         $news->delete();
 
-        notify()
-            ->success()
-            ->title('Nyhet raderad!')
-            ->send();
+        notify()->success()->title('Nyhet raderad!')->send();
 
         return redirect()->route('news.index');
     }

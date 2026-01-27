@@ -21,8 +21,8 @@
                                 </div>
                                 <div class="flex items-center justify-between"><span class="text-gray-700">Status</span>
                                     <div
-                                        class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-800/20 text-secondary-foreground hover:bg-secondary/80">
-                                        Ej betald</div>
+                                        class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 {{ $user->payment_status_color }} hover:bg-secondary/80">
+                                        {{ $user->translated_payment_status }}</div>
                                 </div>
                                 <div class="flex items-center justify-between"><span
                                         class="text-gray-700">Förfallodatum</span><span class="flex items-center gap-2"><svg

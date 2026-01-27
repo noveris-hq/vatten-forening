@@ -6,24 +6,15 @@ use App\Models\Document;
 use App\Models\News;
 use App\Models\Status;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
-class AdminDashboardController extends Controller
+final class AdminDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-
-        /**
-         * !TODO: Replace hardcoded status with dynamic data from database
-         * i dont want the status to be editable from the statamic cms
-         */
-
-        // Later: fetch from database
         $status = Status::latest()->first();
         $formattedUpdatedAt = $status ? $status->formatted_updated_at : null;
 
@@ -36,72 +27,5 @@ class AdminDashboardController extends Controller
         return view('admin.dashboard', compact('status', 'documents', 'news', 'memberCount', 'formattedUpdatedAt'), [
             'title' => 'Admin Dashboard',
         ]);
-    }
-
-    /**
-     * Display the users management page.
-     */
-    public function users(): View
-    {
-        $users = User::where('is_admin', '0')
-            ->orderBy('name')
-            ->paginate(20);
-
-        $totalMembers = User::where('is_admin', '0')->count();
-        $paidMembers = User::where('is_admin', '0')->where('membership_status', 'paid')->count();
-        $unpaidMembers = User::where('is_admin', '0')->where('membership_status', 'unpaid')->count();
-        $overdueMembers = User::where('is_admin', '0')->where('membership_status', 'overdue')->count();
-
-        return view('admin.users.index', compact('users', 'totalMembers', 'paidMembers', 'unpaidMembers', 'overdueMembers'), [
-            'title' => 'Medlemmar',
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        //
     }
 }

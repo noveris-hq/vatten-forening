@@ -15,7 +15,9 @@
         @include('partials.navbar')
     @endif
     @yield('content')
+    {{-- {{ $slot }} --}}
     @livewireScripts
+    @stack('scripts')
 </body>
 
 </html>

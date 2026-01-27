@@ -1,5 +1,6 @@
 @extends('admin.layout')
 
+<x-dashboard-nav />
 @section('content')
     <main class="container mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold mb-6">Redigera Nyhet</h1>

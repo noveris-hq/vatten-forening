@@ -13,7 +13,7 @@
         <div class="text-center mb-8">
             <div class="flex items-center justify-center gap-2 mb-4">
                 {{-- <x-icon name="droplets" class="h-10 w-10 text-blue-600" /> --}}
-                <h1 class="text-2xl font-serif font-bold text-gray-900">Västra Karbäcken</h1>
+                <h1 class="text-2xl font-serif font-bold text-gray-900">Östra Karbäcken</h1>
             </div>
             <h2 class="text-xl text-gray-600">Medlemsregistrering</h2>
         </div>

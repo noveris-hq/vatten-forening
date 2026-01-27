@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\View\View;
 
-class NewsController extends Controller
+final class NewsController extends Controller
 {
     /**
      * Display the specified news item.

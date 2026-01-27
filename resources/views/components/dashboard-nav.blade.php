@@ -4,12 +4,12 @@
             <div class="flex items-center gap-4">
                 <a href="/"
                     class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
-                    aria-label="Västra Karbäckens vattenförening - Hem">
+                    aria-label="Östra Karbäckens vattenförening - Hem">
                     <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
                         <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
                     </div>
                     <span class="font-semibold text-gray-900 hidden sm:block">
-                        Västra Karbäckens vattenförening
+                        Östra Karbäckens vattenförening
                     </span>
                 </a>
 
@@ -47,7 +47,7 @@
         </div>
     </div>
 </header>
-<nav class="border-b border-gray-200 mb-8 bg-gray-50 sticky top-16 z-40">
+<nav class="border-b border-gray-200 mb-8 bg-gray-50 sticky sm:top-17 top-[69px] z-40">
     <div class="container mx-auto px-4">
         <div class="flex gap-1">
             <a href="{{ route('member.dashboard') }}">
@@ -77,6 +77,22 @@
                     <span class="hidden sm:inline">Dokument</span>
                 </button>
             </a>
+            <a href="{{ route('member.map') }}">
+                <button
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.map') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-map h-4 w-4">
+                        <path
+                            d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z">
+                        </path>
+                        <path d="M15 5.764v15"></path>
+                        <path d="M9 3.236v15"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Karta</span>
+                </button>
+            </a>
+
             <a href="{{ route('member.payments') }}"><button
                     class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.payments') ? 'bg-gray-200/50 border-b-2' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -129,9 +145,11 @@
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Driftstatus</a>
                             <a href="{{ route('nyheter.index') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Nyheter</a>
+                            <a href="{{ route('admin.map.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Karta</a>
                             <a href="{{ route('admin.document.index') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Dokument</a>
-                            <a href="{{ route('admin.users.index') }}"
+                            <a href="{{ route('medlemmar.index') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Medlemmar</a>
                         </div>
                     </div>

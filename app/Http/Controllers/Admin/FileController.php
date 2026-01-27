@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
-class FileController extends Controller
+final class FileController extends Controller
 {
     public function index(): View
     {
@@ -30,34 +30,29 @@ class FileController extends Controller
         return view(
             'admin.document.index',
             ['title' => 'Admin - Dokumenthantering'],
-            compact(
-                'groupedDocuments',
-                'documents',
-                'sortedYears',
-            )
+            compact('groupedDocuments', 'documents', 'sortedYears'),
         );
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'file' => 'required|mimes:pdf,xlx,csv,docx|max:10240', // Max size 10MB
-            'category' => 'required|string|max:255',
-            'year' => 'required|integer',
-        ], [
-            'file.required' => 'Vänligen välj en fil att ladda upp.',
-            'category.required' => 'Vänligen ange en kategori.',
-            'year.required' => 'Vänligen ange ett årtal för detta dokument.',
-        ]);
+        $request->validate(
+            [
+                'file' => 'required|mimes:pdf,xlx,csv,docx|max:10240', // Max size 10MB
+                'category' => 'required|string|max:255',
+                'year' => 'required|integer',
+            ],
+            [
+                'file.required' => 'Vänligen välj en fil att ladda upp.',
+                'category.required' => 'Vänligen ange en kategori.',
+                'year.required' => 'Vänligen ange ett årtal för detta dokument.',
+            ],
+        );
 
         $fileName = $request->file('file')->getClientOriginalName();
 
         $file = $request->file('file');
-        $path = Storage::disk('local')->putFileAs(
-            'documents',
-            $file,
-            $fileName
-        );
+        $path = Storage::disk('local')->putFileAs('documents', $file, $fileName);
 
         $year = $request->input('year');
 
@@ -74,14 +69,9 @@ class FileController extends Controller
             'year' => $year,
         ]);
 
-        notify()
-            ->success()
-            ->title('Dokumentet uppladdat!')
-            ->send();
+        notify()->success()->title('Dokumentet uppladdat!')->send();
 
-        return redirect()
-            ->route('admin.dashboard', compact('fileName'))
-            ->with('success', 'Fil uppladdad: '.$fileName);
+        return redirect()->route('admin.dashboard', compact('fileName'))->with('success', 'Fil uppladdad: '.$fileName);
     }
 
     public function download(Document $document)
@@ -100,22 +90,14 @@ class FileController extends Controller
         if (Storage::disk('local')->exists($document->path)) {
             Storage::disk('local')->delete($document->path);
         } else {
-            notify()
-                ->warning()
-                ->title('Filen hittades!')
-                ->send();
+            notify()->warning()->title('Filen hittades!')->send();
         }
 
         // Delete from database
         $document->delete();
 
-        notify()
-            ->success()
-            ->title('Dokument raderat!')
-            ->send();
+        notify()->success()->title('Dokument raderat!')->send();
 
-        return redirect()
-            ->route('admin.dashboard')
-            ->with('success', 'File deleted successfully!');
+        return redirect()->route('admin.dashboard')->with('success', 'File deleted successfully!');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use App\Models\Document;
 
-class DocumentController extends Controller
+final class DocumentController extends Controller
 {
     public function index()
     {
@@ -18,8 +18,12 @@ class DocumentController extends Controller
                 return $yearGroup->sortByDesc('created_at');
             });
 
-        return view('member.documents', [
-            'title' => 'Medlemsportal - Dokument',
-        ], compact('documents', 'groupedDocuments'));
+        return view(
+            'member.documents',
+            [
+                'title' => 'Medlemsportal - Dokument',
+            ],
+            compact('documents', 'groupedDocuments'),
+        );
     }
 }
