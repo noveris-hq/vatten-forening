@@ -21,10 +21,22 @@
                     class="px-4 py-2 font-medium text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md">
                     Driftstatus
                 </a>
-                <a href="/login"
-                    class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    Logga in
-                </a>
+                @if (auth()->check() && auth()->user()->is_admin)
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md  transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Adminpanel
+                    </a>
+                @elseif (auth()->check())
+                    <a href="{{ route('member.dashboard') }}"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Medlemsportal
+                    </a>
+                @else
+                    <a href="/login"
+                        class="ml-3 inline-flex items-center justify-center px-4 py-2 bg-blue-900/90 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Logga in
+                    </a>
+                @endif
             </nav>
 
             {{-- Mobile Menu Button --}}

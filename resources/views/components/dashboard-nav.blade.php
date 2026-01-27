@@ -131,6 +131,8 @@
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Nyheter</a>
                             <a href="{{ route('admin.document.index') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Dokument</a>
+                            <a href="{{ route('admin.users.index') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Medlemmar</a>
                         </div>
                     </div>
                 </div>

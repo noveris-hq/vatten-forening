@@ -55,26 +55,38 @@
                 <p class="text-sm text-black">Det finns inga nyheter för tillfället.</p>
             @endif
             @foreach ($latestNews as $news)
-                <div class="flex items-start mt-3 gap-3 pb-3 border-b border-gray-200 last:border-0 last:pb-0">
-                    {{-- <div class="h-2 w-2 rounded-full bg-primary mt-2 shrink-0"></div> --}}
-                    <div class='h-2 w-2 mt-2 shrink-0 bg-blue-900/70 rounded-full'></div>
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center gap-2">
-                            <h4 class="font-medium text-sm">{{ $news->title }}</h4>
-                            @if ($news->is_important)
-                                <span
-                                    class="inline-flex items-center rounded-lg bg-blue-900/10 text-blue-900 font-bold px-1.5 py-0.5 text-xs">Viktigt</span>
-                            @endif
+                <a href="{{ route('member.news.show', $news) }}"
+                    class="hover:cursor-pointer hover:bg-gray-50 rounded-lg transition-colors">
+                    <div
+                        class="flex items-start mt-3 gap-3 pb-3 border-b border-gray-200 last:border-0 last:pb-0 hover:cursor-pointer">
+                        {{-- <div class="h-2 w-2 rounded-full bg-primary mt-2 shrink-0"></div> --}}
+                        {{-- <div class='h-2 w-2 mt-2 shrink-0 bg-blue-900/70 rounded-full transition-colors'></div> --}}
+                        <div class="flex-1 min-w-0 hover:bg-slate-50 rounded-lg transition-colors p-3">
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-sm font-semibold">{{ $news->title }}</h4>
+                                @if ($news->is_important)
+                                    <span
+                                        class="inline-flex items-center rounded-lg bg-blue-900/10 text-blue-900 font-bold px-1.5 py-0.5 text-xs">Viktigt</span>
+                                @endif
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" <a href="{{ route('member.news.show', $news) }}" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="lucide lucide-chevron-right h-4 w-4 text-muted-foreground shrink-0 mt-1 ml-auto">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+
+                            </div>
+                            <p class="text-xs text-gray-500 mt-0.5">
+                                {{ $news->date->format('Y-m-d') }}
+                            </p>
+                            {{-- TODO: Show full content or link to full news article --}}
+                            <p class="text-sm text-gray-700 mt-2">
+                                {{ Str::limit($news->content, 100, '...') }}
+                            </p>
                         </div>
-                        <p class="text-xs text-gray-500 mt-0.5">
-                            {{ $news->date->format('Y-m-d') }}
-                        </p>
-                        {{-- TODO: Show full content or link to full news article --}}
-                        <p class="text-sm text-gray-700 mt-2">
-                            {{ Str::limit($news->content, 100, '...') }}
-                        </p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>

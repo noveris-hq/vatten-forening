@@ -39,6 +39,25 @@ class AdminDashboardController extends Controller
     }
 
     /**
+     * Display the users management page.
+     */
+    public function users(): View
+    {
+        $users = User::where('is_admin', '0')
+            ->orderBy('name')
+            ->paginate(20);
+
+        $totalMembers = User::where('is_admin', '0')->count();
+        $paidMembers = User::where('is_admin', '0')->where('membership_status', 'paid')->count();
+        $unpaidMembers = User::where('is_admin', '0')->where('membership_status', 'unpaid')->count();
+        $overdueMembers = User::where('is_admin', '0')->where('membership_status', 'overdue')->count();
+
+        return view('admin.users.index', compact('users', 'totalMembers', 'paidMembers', 'unpaidMembers', 'overdueMembers'), [
+            'title' => 'Medlemmar',
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
