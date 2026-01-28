@@ -1,4 +1,4 @@
-@props(['importantNews' => null, 'latestNews' => collect(), 'documents' => collect()])
+@props(['importantNews' => null, 'latestNews' => collect(), 'documents' => collect(), 'user' => null])
 <!-- Viktiga meddelanden -->
 @if ($importantNews)
     <div class="rounded-lg border border-sky-200 dark:border-sky-700 bg-sky-50 dark:bg-sky-900/20">
@@ -104,7 +104,7 @@
             <div class="flex items-center justify-between">
                 <span class="text-gray-600 dark:text-gray-400">Status</span>
                 <span
-                    class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">Betald</span>
+                    class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">{{ $user->translated_payment_status }}</span>
             </div>
             <div class="flex items-center justify-between">
                 <span class="text-gray-600 dark:text-gray-400">Förfallodatum</span>
@@ -159,18 +159,19 @@
                                 {{ Str::ucfirst($document->updated_at->isoFormat('dddd, D MMMM YYYY')) }}</p>
                         </div>
                     </div>
-                    {{-- <a href="{{ route('', $document->id) }}"> --}}
-                    <button
-                        class="hover:cursor-pointer inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 h-9 rounded-md px-3 gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-download h-4 w-4">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" x2="12" y1="15" y2="3"></line>
-                        </svg><span class="hidden sm:inline">Ladda ner</span>
-                    </button>
-                    {{-- </a> --}}
+                    <a href="{{ route('member.documents.download', $document->id) }}">
+                        <button
+                            class="hover:cursor-pointer inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 h-9 rounded-md px-3 gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-download h-4 w-4">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                            </svg><span class="hidden sm:inline">Ladda ner</span>
+                        </button>
+                    </a>
                 </div>
             </div>
         @endforeach

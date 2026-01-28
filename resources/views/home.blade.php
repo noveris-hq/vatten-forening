@@ -66,7 +66,7 @@
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($page->cards as $card)
                         <x-info-card :icon="$card['icon']" :card_title="$card['title']" :card_content="$card['card_content']" :card_link_text="$card['card_link_text']"
-                            :card_link="$card['card_link']" />
+                            :url="$card['url']" />
                     @endforeach
                 </div>
             </div>

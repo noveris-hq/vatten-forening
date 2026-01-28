@@ -9,7 +9,6 @@ Statamic is the flat-first, Laravel + Git powered CMS designed for building beau
 >
 > The code for the Statamic Composer package itself can be found at the [Statamic core package repository][cms-repo].
 
-
 ## Learning Statamic
 
 Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
@@ -18,16 +17,13 @@ Statamic has extensive [documentation][docs]. We dedicate a significant amount o
 
 We provide official developer support on [Statamic Pro](https://statamic.com/pricing) projects. Community-driven support is available via [GitHub Discussions](https://github.com/statamic/cms/discussions) and in [Discord][discord].
 
-
 ## Contributing
 
 Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
 
-
 ## Code of Conduct
 
 In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
-
 
 ## Important Links
 

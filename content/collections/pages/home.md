@@ -1,22 +1,18 @@
 ---
 id: home
 blueprint: landing
-title: 'Västra Karbäckens Vattenförening'
+title: 'Östra Karbäckens Vattenförening'
 template: home
 hero_badge: Vattenförening
-hero_title: 'Västra Karbäckens vattenförening'
+hero_title: 'Östra Karbäckens vattenförening'
 hero_content:
   -
     type: paragraph
-    attrs:
-      textAlign: left
     content:
       -
         type: text
-        text: |-
-          Vi är en förening som arbetar för att bevara och förbättra vattenkvaliteten i Västra Karbäcken.
-          Genom samarbete med våra medlemmar och lokala myndigheter säkerställer vi rent vatten för framtida generationer.
-hero_image_alt: 'Naturskönt område i Västra Karbäcken'
+        text: 'Vi är en förening som arbetar för att bevara och förbättra vattenkvaliteten i Östra Karbäcken. Genom samarbete med våra medlemmar säkerställer vi rent vatten för framtida generationer.'
+hero_image_alt: 'Naturskönt område i Östra Karbäcken'
 services_title: 'För våra medlemmar'
 services_content:
   -
@@ -80,8 +76,8 @@ contact_intro:
 contact_phone: '08-123 45 67'
 contact_email: info@vastrakarbacken.se
 author: 01cf83db-9a18-45c8-9488-997c289e6cdb
-updated_by: 9b5aef44-eb55-40e0-9a20-d4f3cee06e43
-updated_at: 1768228723
+updated_by: 6
+updated_at: 1769610358
 hero_image: karbacken-vatten.jpg
 about_image: karbacken-vatten.jpg
 status: warning
@@ -98,7 +94,7 @@ cards_description:
     content:
       -
         type: text
-        text: 'Vi erbjuder olika tjänster för våra medlemmar, från vattenanalys till teknisk support och rådgivning.'
+        text: 'Vi erbjuder olika tjänster för våra medlemmar. '
 cards:
   -
     id: mkb2t725
@@ -115,6 +111,7 @@ cards:
         height: 1em
         viewBox: '0 0 21 21'
       body: '<g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 15.5v-7l-5-5h-5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2m-10-5h5m-5 2h7m-7 2h3"/><path d="M11.5 3.5v3a2 2 0 0 0 2 2h3"/></g>'
+    url: 'http://localhost:8000/medlemsportal/dokument'
   -
     id: mkb9m7av
     title: Avgifter
@@ -129,6 +126,7 @@ cards:
       body: '<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 20h8M3 13h26m-6 7h2M5 7C4 7 3 8 3 9v14c0 1 1 2 2 2h22c1 0 2-1 2-2V9c0-1-1-2-2-2z"/>'
     type: card
     enabled: true
+    url: 'http://localhost:8000/medlemsportal/betalningar'
   -
     id: mkb9nam2
     title: Medlemmar
@@ -143,4 +141,5 @@ cards:
       body: '<path fill="currentColor" fill-rule="evenodd" d="M8 7a4 4 0 1 1 8 0a4 4 0 0 1-8 0m0 6a5 5 0 0 0-5 5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3a5 5 0 0 0-5-5z" clip-rule="evenodd"/>'
     type: card
     enabled: true
+    url: 'http://localhost:8000/medlemsportal'
 ---

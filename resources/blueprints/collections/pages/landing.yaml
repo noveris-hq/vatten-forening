@@ -72,9 +72,11 @@ tabs:
                           field:
                             type: textarea
                         -
-                          handle: card_link
+                          handle: url
                           field:
-                            type: form
+                            input_type: url
+                            type: text
+                            display: Url
                         -
                           handle: card_link_text
                           field:

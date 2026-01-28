@@ -1,4 +1,4 @@
-@props(['icon' => '', 'card_title' => '', 'card_content' => '', 'card_link_text' => '', 'card_link' => '#'])
+@props(['icon' => '', 'card_title' => '', 'card_content' => '', 'card_link_text' => '', 'url' => '#'])
 
 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 hover:shadow-md transition-shadow">
     <div class="flex items-start gap-4">
@@ -10,8 +10,8 @@
         <div class="flex-1 min-w-0">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">{{ $card_title }}</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-4">{{ $card_content }}</p>
-            @if ($card_link_text && $card_link)
-                <a href="{{ $card_link }}"
+            @if ($card_link_text && $url)
+                <a href="{{ $url }}"
                     class="inline-flex items-center text-blue-900/90 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
                     {{ $card_link_text }}
                     <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

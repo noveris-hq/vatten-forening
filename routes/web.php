@@ -40,6 +40,9 @@ Route::prefix('medlemsportal')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
         Route::get('/dokument', [DocumentController::class, 'index'])->name('member.documents');
+        Route::get('/dokument/download/{document}', [DocumentController::class, 'download'])->name(
+            'member.documents.download',
+        );
         Route::get('/karta', [MemberMapController::class, 'index'])->name('member.map');
         Route::get('/betalningar', [PaymentController::class, 'index'])->name('member.payments');
         Route::get('/nyheter/{news}', [NewsController::class, 'show'])->name('member.news.show');

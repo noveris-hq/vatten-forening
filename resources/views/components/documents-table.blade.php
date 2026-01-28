@@ -7,8 +7,8 @@
                 <div class="flex items-start gap-3">
                     <!-- File icon -->
                     <div class="mt-0.5 rounded-md bg-gray-100 dark:bg-gray-700 p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 dark:text-gray-400" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 dark:text-gray-400"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
@@ -17,7 +17,8 @@
                     <div>
                         <p class="font-medium leading-tight text-gray-900 dark:text-gray-100">{{ $doc->filename }}</p>
 
-                        <div class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600 dark:text-gray-400">
+                        <div
+                            class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600 dark:text-gray-400">
                             @if ($doc->uploader)
                                 <span>Uppladdad av: {{ $doc->uploader->name }}</span>
                             @endif
