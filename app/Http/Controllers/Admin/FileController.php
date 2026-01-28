@@ -27,11 +27,9 @@ final class FileController extends Controller
             ->orderBy('year', 'desc')
             ->pluck('year');
 
-        return view(
-            'admin.document.index',
-            ['title' => 'Admin - Dokumenthantering'],
-            compact('groupedDocuments', 'documents', 'sortedYears'),
-        );
+        $title = 'Dokumenthantering';
+
+        return view('admin.document.index', compact('groupedDocuments', 'documents', 'sortedYears', 'title'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -71,7 +69,7 @@ final class FileController extends Controller
 
         notify()->success()->title('Dokumentet uppladdat!')->send();
 
-        return redirect()->route('admin.dashboard', compact('fileName'))->with('success', 'Fil uppladdad: '.$fileName);
+        return redirect()->route('admin.dashboard', compact('fileName'));
     }
 
     public function download(Document $document)
@@ -98,6 +96,6 @@ final class FileController extends Controller
 
         notify()->success()->title('Dokument raderat!')->send();
 
-        return redirect()->route('admin.dashboard')->with('success', 'File deleted successfully!');
+        return redirect()->route('admin.dashboard');
     }
 }

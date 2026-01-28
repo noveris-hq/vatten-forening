@@ -10,15 +10,15 @@
             <div>
                 <div class="flex items-center justify-between">
                     <div>
-                        <h1 class="text-3xl font-bold text-foreground">Dokument</h1>
-                        <p class="mt-1 text-gray-600">
+                        <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Dokument</h1>
+                        <p class="mt-1 text-gray-600 dark:text-gray-300">
                             Stadgar, protokoll, mötesanteckningar och andra viktiga dokument från föreningen.
                         </p>
                     </div>
 
                     @if (auth()->user()?->is_admin)
                         <button
-                            class="inline-flex items-center gap-2 rounded-md border border-input bg-white px-4 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground">
+                            class="inline-flex items-center gap-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
@@ -33,19 +33,19 @@
             </div>
 
             <!-- Main documents section -->
-            <div class="rounded-xl border border-gray-200 bg-white text-card-foreground">
+            <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                 <div class="flex flex-col space-y-1.5 p-6">
-                    <h2 class=" font-semibold leading-none tracking-tight">
+                    <h2 class="font-semibold leading-none tracking-tight text-gray-900 dark:text-gray-100">
                         Dokument & Protokoll
                     </h2>
-                    {{-- <p class="text-sm text-muted-foreground"> --}}
+                    {{-- <p class="text-sm text-gray-600 dark:text-gray-400"> --}}
                     {{--     {{ $documents->count() }} dokument tillgängliga --}}
                     {{-- </p> --}}
                 </div>
 
                 <div class="px-6 pt-0 pb-6">
                     @if ($groupedDocuments->isEmpty())
-                        <div class="py-10 text-center text-muted-foreground">
+                        <div class="py-10 text-center text-gray-600 dark:text-gray-400">
                             Inga dokument uppladdade än.
                         </div>
                     @else

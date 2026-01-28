@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Http\Requests\WaterValveRequest;
 use App\Models\WaterValve;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -46,13 +47,9 @@ final class AdminMapController extends Controller
             'property_number' => $valve->user?->property_number,
         ])->toArray();
 
-        return view(
-            'admin.map.index',
-            [
-                'title' => 'Admin Karta över området',
-            ],
-            compact('waterValves', 'markers', 'mapCenter', 'context'),
-        );
+        $title = 'Karta över området';
+
+        return view('admin.map.index', compact('waterValves', 'markers', 'mapCenter', 'context', 'title'));
     }
 
     /**
@@ -66,40 +63,23 @@ final class AdminMapController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WaterValveRequest $request): RedirectResponse
     {
-        //
-    }
+        $validated = $request->validated();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user, Request $request)
-    {
-        //
-    }
+        // Check if user already has a water valve
+        $existingValve = WaterValve::where('user_id', $validated['user_id'])->first();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
-    }
+        if ($existingValve) {
+            return redirect()
+                ->route('admin.map.index')
+                ->with('error', 'Användaren har redan en vattenventil tilldelad.');
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
+        $waterValve = WaterValve::create($validated);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        //
+        notify()->success()->title('Vattenventil har skapats och tilldelats till '.$waterValve->user->name)->send();
+
+        return redirect()->route('admin.map.index');
     }
 }

@@ -6,7 +6,7 @@
         <div class="max-w-3xl mx-auto">
             <a href="{{ route('member.dashboard') }}">
                 <button
-                    class="hover:cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-2 mb-6 -ml-2">
+                    class="hover:cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 h-10 px-4 py-2 gap-2 mb-6 -ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-arrow-left h-4 w-4">
@@ -16,15 +16,15 @@
                     Tillbaka
                 </button>
             </a>
-            <div class="rounded-lg border border-gray-200 bg-white">
+            <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                 <div class="flex flex-col space-y-1.5 p-6">
                     <div class="flex items-start justify-between gap-4">
                         <div class="space-y-2">
                             <div class="flex items-center gap-2"></div>
-                            <h3 class="font-semibold tracking-tight text-2xl">{{ $news->title }}</h3>
+                            <h3 class="font-semibold tracking-tight text-2xl text-gray-900 dark:text-gray-100">{{ $news->title }}</h3>
                         </div>
                         <div
-                            class="inline-flex items-center rounded-full border border-gray-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground shrink-0">
+                            class="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-gray-900 dark:text-gray-100 shrink-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-calendar h-3 w-3 mr-1">
@@ -38,8 +38,8 @@
                     </div>
                 </div>
                 <div class="p-6 pt-0">
-                    <div class="prose max-w-none">
-                        <p class="text-muted-foreground mb-4 whitespace-pre-line">{{ $news->content }}</p>
+                    <div class="prose dark:prose-invert max-w-none">
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 whitespace-pre-line">{{ $news->content }}</p>
                     </div>
                 </div>
             </div>

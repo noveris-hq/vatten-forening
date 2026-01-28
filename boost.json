@@ -3,10 +3,15 @@
         "copilot",
         "opencode"
     ],
-    "editors": [
-        "opencode"
-    ],
-    "guidelines": [
+    "guidelines": true,
+    "herd_mcp": false,
+    "mcp": true,
+    "packages": [
         "laravel/fortify"
+    ],
+    "sail": false,
+    "skills": [
+        "livewire-development",
+        "tailwindcss-development"
     ]
 }

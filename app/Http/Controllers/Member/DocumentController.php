@@ -18,12 +18,8 @@ final class DocumentController extends Controller
                 return $yearGroup->sortByDesc('created_at');
             });
 
-        return view(
-            'member.documents',
-            [
-                'title' => 'Medlemsportal - Dokument',
-            ],
-            compact('documents', 'groupedDocuments'),
-        );
+        $title = 'Medlemsportal - Dokument';
+
+        return view('member.documents', compact('documents', 'groupedDocuments', 'title'));
     }
 }

@@ -14,13 +14,9 @@ final class StatusController extends Controller
         $value = Status::latest()->first();
         $formattedUpdatedAt = $value ? $value->formatted_updated_at : null;
 
-        return view(
-            'admin.status.index',
-            [
-                'title' => 'Adminportalen - Status',
-            ],
-            compact('value'),
-        );
+        $title = 'Adminportalen - Status';
+
+        return view('admin.status.index', compact('value', 'formattedUpdatedAt', 'title'));
     }
 
     public function update(Request $request): RedirectResponse

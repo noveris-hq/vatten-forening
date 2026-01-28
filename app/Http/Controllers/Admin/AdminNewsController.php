@@ -17,13 +17,9 @@ final class AdminNewsController extends Controller
     {
         $news = News::orderBy('date', 'desc')->paginate(10);
 
-        return view(
-            'admin.news.index',
-            [
-                'title' => 'Nyheter',
-            ],
-            compact('news'),
-        );
+        $title = 'Nyheter';
+
+        return view('admin.news.index', compact('news', 'title'));
     }
 
     /**
@@ -69,14 +65,9 @@ final class AdminNewsController extends Controller
     public function edit(string $id): View
     {
         $news = News::findOrFail($id);
+        $title = 'Redigera nyhet';
 
-        return view(
-            'admin.news.edit',
-            [
-                'title' => 'Redigera nyhet',
-            ],
-            compact('news'),
-        );
+        return view('admin.news.edit', compact('news', 'title'));
     }
 
     /**
@@ -109,6 +100,6 @@ final class AdminNewsController extends Controller
 
         notify()->success()->title('Nyhet raderad!')->send();
 
-        return redirect()->route('news.index');
+        return redirect()->route('nyheter.index');
     }
 }

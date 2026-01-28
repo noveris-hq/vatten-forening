@@ -4,6 +4,8 @@
 @source "../../content";
 @source "../../vendor/mckenziearts/laravel-notify/resources/views/**/*.blade.php";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
     --hero-overlay: linear-gradient(
         180deg,

@@ -4,9 +4,9 @@
     $statusValue = $status->status;
 
     $statusClasses = [
-        'ok' => 'bg-green-50 border-green-200 text-green-800',
-        'warning' => 'bg-yellow-50 border-yellow-200 text-yellow-800',
-        'critical' => 'bg-red-50 border-red-200 text-red-800',
+        'ok' => 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700 text-green-800 dark:text-green-300',
+        'warning' => 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-300',
+        'critical' => 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700 text-red-800 dark:text-red-300',
     ];
 
     $statusIcons = [

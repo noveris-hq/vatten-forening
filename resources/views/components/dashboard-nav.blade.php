@@ -1,4 +1,4 @@
-<header class="border-b border-gray-200 bg-white sticky top-0 z-50">
+<header class="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-4">
@@ -8,51 +8,44 @@
                     <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
                         <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
                     </div>
-                    <span class="font-semibold text-gray-900 hidden sm:block">
+                    <span class="font-semibold text-gray-900 dark:text-gray-100 hidden sm:block">
                         Östra Karbäckens vattenförening
                     </span>
                 </a>
-
+            </div>
+            <div class="flex items-center gap-4">
                 <div class="flex items-center gap-2">
-                    @if (!auth()->user()->is_admin)
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-user h-5 w-5 text-primary">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        <span class="font-medium">Medlemssida</span>
+                    <x-theme-toggle />
+                    <span class="text-sm text-gray-700 dark:text-gray-300">Inloggad som:</span><span
+                        class="text-sm font-medium text-green-600 dark:text-green-400">{{ auth()->user()->email }}</span>
+                    @if (auth()->user()->is_admin)
+                        - <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">Admin</span>
                     @endif
                 </div>
-            </div>
-            <div class="flex items-center gap-2"><span class="text-sm text-gray-700">Inloggad som:</span><span
-                    class="text-sm font-medium text-green-600">{{ auth()->user()->email }}</span>
-                @if (auth()->user()->is_admin)
-                    - <span class="text-sm font-semibold text-gray-600">Admin</span>
-                @endif
-            </div>
-            <form method="POST" action="/logout" class="inline-flex items-center ml-3">
+                <form method="POST" action="/logout" class="inline-flex items-center ml-3">
 
-                @csrf
-                <button type="submit"
-                    class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-gray-300 bg-transparent hover:bg-teal-50 hover:text-teal-600 hover:cursor-pointer h-9 rounded-md px-3 gap-2"><svg
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-log-out h-4 w-4">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                        <polyline points="16 17 21 12 16 7"></polyline>
-                        <line x1="21" x2="9" y1="12" y2="12"></line>
-                    </svg><span class="hidden sm:inline">Logga ut</span></button>
-            </form>
+                    @csrf
+                    <button type="submit"
+                        class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-gray-300 dark:border-gray-600 bg-transparent hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 hover:cursor-pointer h-9 rounded-md px-3 gap-2 text-gray-900 dark:text-gray-100"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-log-out h-4 w-4">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" x2="9" y1="12" y2="12"></line>
+                        </svg><span class="hidden sm:inline">Logga ut</span></button>
+                </form>
+            </div>
         </div>
     </div>
 </header>
-<nav class="border-b border-gray-200 mb-8 bg-gray-50 sticky sm:top-17 top-[69px] z-40">
+<nav
+    class="border-b border-gray-200 dark:border-gray-700 mb-8 bg-gray-50 dark:bg-gray-800 sticky sm:top-17 top-[69px] z-40">
     <div class="container mx-auto px-4">
         <div class="flex gap-1">
             <a href="{{ route('member.dashboard') }}">
                 <button
-                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.dashboard') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 h-10 px-4 py-2 gap-2 rounded-none text-gray-900 dark:text-gray-100 {{ request()->routeIs('member.dashboard') ? 'bg-gray-200/50 dark:bg-gray-700/50 border-b-2 dark:border-teal-400' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-bell h-4 w-4">
@@ -64,7 +57,7 @@
             </a>
             <a href="{{ route('member.documents') }}">
                 <button
-                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.documents') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 h-10 px-4 py-2 gap-2 rounded-none text-gray-900 dark:text-gray-100 {{ request()->routeIs('member.documents') ? 'bg-gray-200/50 dark:bg-gray-700/50 border-b-2 dark:border-teal-400' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-file-text h-4 w-4">
@@ -79,7 +72,7 @@
             </a>
             <a href="{{ route('member.map') }}">
                 <button
-                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.map') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 h-10 px-4 py-2 gap-2 rounded-none text-gray-900 dark:text-gray-100 {{ request()->routeIs('member.map') ? 'bg-gray-200/50 dark:bg-gray-700/50 border-b-2 dark:border-teal-400' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-map h-4 w-4">
@@ -94,7 +87,7 @@
             </a>
 
             <a href="{{ route('member.payments') }}"><button
-                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 hover:text-teal-600 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('member.payments') ? 'bg-gray-200/50 border-b-2' : '' }}">
+                    class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 h-10 px-4 py-2 gap-2 rounded-none text-gray-900 dark:text-gray-100 {{ request()->routeIs('member.payments') ? 'bg-gray-200/50 dark:bg-gray-700/50 border-b-2 dark:border-teal-400' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="lucide lucide-credit-card h-4 w-4">
@@ -129,7 +122,7 @@
                         x-id="['dropdown-button']" class="relative">
                         <button x-ref="button" x-on:click="toggle()" :aria-expanded="open"
                             :aria-controls="$id('dropdown-button')" type="button"
-                            class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 gap-2 rounded-none {{ request()->routeIs('admin.dashboard') || request()->is('adminportal/*') ? 'bg-gray-200/50 border-b-2' : '' }}"
+                            class="inline-flex hover:cursor-pointer items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 px-4 py-2 gap-2 rounded-none text-gray-900 dark:text-gray-100 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 {{ request()->routeIs('admin.dashboard') || request()->is('adminportal/*') ? 'bg-gray-200/50 dark:bg-gray-700/50 border-b-2 dark:border-teal-400' : '' }}"
                             <span>Admin</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                                 class="size-4">
@@ -140,17 +133,17 @@
                         </button>
                         <div x-ref="panel" x-show="open" x-transition.origin.top.left
                             x-on:click.outside="close($refs.button)" :id="$id('dropdown-button')" x-cloak
-                            class="absolute left-0 min-w-48 rounded-lg shadow-sm mt-2 z-10 origin-top-left bg-white p-1.5 outline-none border border-gray-200">
+                            class="absolute left-0 min-w-48 rounded-lg shadow-sm mt-2 z-10 origin-top-left bg-white dark:bg-gray-800 p-1.5 outline-none border border-gray-200 dark:border-gray-700">
                             <a href="{{ route('admin.dashboard') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Driftstatus</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 rounded-md">Driftstatus</a>
                             <a href="{{ route('nyheter.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Nyheter</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 rounded-md">Nyheter</a>
                             <a href="{{ route('admin.map.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Karta</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 rounded-md">Karta</a>
                             <a href="{{ route('admin.document.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Dokument</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 rounded-md">Dokument</a>
                             <a href="{{ route('medlemmar.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-50 hover:text-teal-600">Medlemmar</a>
+                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 rounded-md">Medlemmar</a>
                         </div>
                     </div>
                 </div>

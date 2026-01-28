@@ -31,15 +31,9 @@ final class MemberMapController extends Controller
             'property_number' => $valve->user?->property_number,
         ])->toArray();
 
-        /* dd($markers); */
+        $title = 'Karta över området';
 
-        return view(
-            'member.map',
-            [
-                'title' => 'Karta över området',
-            ],
-            compact('waterValves', 'markers', 'mapCenter'),
-        );
+        return view('member.map', compact('waterValves', 'markers', 'mapCenter', 'title'));
     }
 
     /**

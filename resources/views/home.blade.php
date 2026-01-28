@@ -44,7 +44,7 @@
             </div>
         </section>
 
-        <section id="status" class="py-8 bg-gray-50 scroll-mt-16">
+        <section id="status" class="py-8 bg-gray-50 dark:bg-gray-800/50 scroll-mt-16">
             <div class="container mx-auto px-4 max-w-2xl">
                 @if ($page->system_status)
                     <x-status-banner :status="$status" />
@@ -55,11 +55,11 @@
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-4">
                 <div class="text-center max-w-2xl mx-auto mb-12">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-gray-100">
                         {{ $page->cards_title }}
                     </h2>
 
-                    <div class="mt-4 text-gray-600 text-lg prose">
+                    <div class="mt-4 text-gray-600 dark:text-gray-300 text-lg prose dark:prose-invert">
                         {!! $page->cards_description !!}
                     </div>
                 </div>
@@ -72,15 +72,15 @@
             </div>
         </section>
 
-        <section id="om-oss" class="py-16 md:py-24 bg-gray-50 scroll-mt-16">
+        <section id="om-oss" class="py-16 md:py-24 bg-gray-50 dark:bg-gray-800/50 scroll-mt-16">
             <div class="container mx-auto px-4">
                 <div class="grid gap-12 lg:grid-cols-2 items-center">
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-gray-100">
                             {{ $page->about_title }}
                         </h2>
 
-                        <div class="mt-6 space-y-4 text-gray-600 prose">
+                        <div class="mt-6 space-y-4 text-gray-600 dark:text-gray-300 prose dark:prose-invert">
                             {!! $page->about_content !!}
                         </div>
 
@@ -106,11 +106,11 @@
                         @endif
                         @if ($page->property_count)
                             <div
-                                class="absolute -bottom-4 -left-4 p-4 bg-white rounded-lg shadow-xl border border-gray-200">
-                                <p class="text-2xl font-serif font-bold text-blue-900/90">
+                                class="absolute -bottom-4 -left-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700">
+                                <p class="text-2xl font-serif font-bold text-blue-900/90 dark:text-blue-400">
                                     {{ $page->property_count }}st
                                 </p>
-                                <p class="text-sm text-gray-600">fastigheter</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">fastigheter</p>
                             </div>
                         @endif
                     </div>

@@ -13,7 +13,6 @@ final class UserController extends Controller
      */
     public function index(Request $request)
     {
-        // Start with base query
         $query = User::query();
 
         // Apply filter if present
@@ -21,7 +20,7 @@ final class UserController extends Controller
             $query->where('payment_status', $request->input('filter'));
         }
 
-        // Apply search if present (works WITH filter)
+        // Apply search if present
         if ($request->filled('search')) {
             $searchTerm = $request->input('search');
             $query->where(function ($q) use ($searchTerm) {
@@ -34,44 +33,21 @@ final class UserController extends Controller
 
         $users = $query->orderBy('name')->paginate(15)->appends($request->query());
 
-        /* $filter = $request->input('filter'); */
-        /* $filteredUsers = match ($filter) { */
-        /*     'paid' => User::where('payment_status', 'paid')->orderBy('name')->paginate(15), */
-        /*     'unpaid' => User::where('payment_status', 'unpaid')->orderBy('name')->paginate(15), */
-        /*     'overdue' => User::where('payment_status', 'overdue')->orderBy('name')->paginate(15), */
-        /*     default => User::orderBy('name')->paginate(15), */
-        /* }; */
-        /* if ($filter) { */
-        /*     $users = $filteredUsers->appends(['filter' => $filter]); */
-        /* } else { */
-        /*     $users = $filteredUsers; */
-        /* } */
-        /**/
-        /* $searchQuery = $request->input('search'); */
-        /* if ($searchQuery) { */
-        /*     $users = User::where('name', 'like', '%'.$searchQuery.'%') */
-        /*         ->orWhere('email', 'like', '%'.$searchQuery.'%') */
-        /*         ->orderBy('name') */
-        /*         ->paginate(20) */
-        /*         ->appends(['search' => $searchQuery]); */
-        /*     if ($users->isEmpty()) { */
-        /*         notify()->info()->title('Inga medlemmar hittades för sökningen: '.$searchQuery)->send(); */
-        /*     } */
-        /* } */
-        /* $users = User::orderBy('name')->paginate(15); */
-
         $totalMembers = User::count();
         $paidMembers = User::where('payment_status', 'paid')->count();
         $unpaidMembers = User::where('payment_status', 'unpaid')->count();
         $overdueMembers = User::where('payment_status', 'overdue')->count();
 
-        return view(
-            'admin.users.index',
-            compact('users', 'totalMembers', 'paidMembers', 'unpaidMembers', 'overdueMembers'),
-            [
-                'title' => 'Medlemmar',
-            ],
-        );
+        $title = 'Medlemmar';
+
+        return view('admin.users.index', compact(
+            'users',
+            'totalMembers',
+            'paidMembers',
+            'unpaidMembers',
+            'overdueMembers',
+            'title',
+        ));
     }
 
     /**
@@ -103,13 +79,9 @@ final class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view(
-            'admin.users.edit',
-            [
-                'title' => 'Redigera medlem',
-            ],
-            compact('user'),
-        );
+        $title = 'Redigera medlem';
+
+        return view('admin.users.edit', compact('user', 'title'));
     }
 
     /**
@@ -120,12 +92,33 @@ final class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'phone' => 'nullable|string|max:20',
+            'property_number' => 'nullable|string|max:50',
+            'street_name' => 'nullable|string|max:255',
+            'postal_code' => 'nullable|string|max:10',
+            'city' => 'nullable|string|max:100',
             'payment_status' => 'required|in:paid,unpaid,overdue',
         ]);
 
         $user->update($validatedData);
 
-        notify()->success()->title('Medlem updaterad!')->send();
+        // Handle water valve data if present
+        if ($request->has(['location_description', 'latitude', 'longitude'])) {
+            $valveData = $request->validate([
+                'location_description' => 'required|string|max:255',
+                'latitude' => 'required|numeric|between:-90,90',
+                'longitude' => 'required|numeric|between:-180,180',
+                'is_open' => 'boolean',
+            ]);
+
+            // Create or update water valve for this user
+            $waterValve = $user->waterValves ?? new WaterValve;
+            $waterValve->user_id = $user->id;
+            $waterValve->fill($valveData);
+            $waterValve->save();
+        }
+
+        notify()->success()->title('Medlem uppdaterad!')->send();
 
         return redirect()->route('medlemmar.index');
     }

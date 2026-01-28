@@ -24,8 +24,15 @@ final class AdminDashboardController extends Controller
 
         $memberCount = User::where('is_admin', '0')->count();
 
-        return view('admin.dashboard', compact('status', 'documents', 'news', 'memberCount', 'formattedUpdatedAt'), [
-            'title' => 'Admin Dashboard',
-        ]);
+        $title = 'Admin Dashboard';
+
+        return view('admin.dashboard', compact(
+            'status',
+            'documents',
+            'news',
+            'memberCount',
+            'formattedUpdatedAt',
+            'title',
+        ));
     }
 }
