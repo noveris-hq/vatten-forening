@@ -14,8 +14,19 @@ final class HomeController extends Controller
     public function index(): View
     {
         $status = Status::latest()->first();
+
+        if (! $status) {
+            $status = new Status([
+                'status' => 'warning',
+                'message' => 'Det finns ingen status tillgänglig för närvarande.',
+            ]);
+            $status->formatted_updated_at = now()->toDateTimeString();
+            $status->updated_at = now();
+        }
+
         $formattedUpdatedAt = $status ? $status->formatted_updated_at : null;
 
+        // Fetch the 'home' page entry from the 'pages' collection in Statamic
         $entries = Entry::query()
             ->where('collection', 'pages')
             ->where('slug', 'home')

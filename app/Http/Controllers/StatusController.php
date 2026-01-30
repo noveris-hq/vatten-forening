@@ -12,6 +12,16 @@ final class StatusController extends Controller
     public function index(): View
     {
         $value = Status::latest()->first();
+
+        if (! $value) {
+            $value = new Status([
+                'status' => 'warning',
+                'message' => 'Det finns ingen status tillgänglig för närvarande.',
+            ]);
+            $value->formatted_updated_at = now()->toDateTimeString();
+            $value->updated_at = now();
+        }
+
         $formattedUpdatedAt = $value ? $value->formatted_updated_at : null;
 
         $title = 'Adminportalen - Status';

@@ -1,11 +1,13 @@
 @props(['status' => null])
 
 @php
-    $statusValue = $status->status;
+    $statusValue = $status?->status;
 
     $statusClasses = [
-        'ok' => 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700 text-green-800 dark:text-green-300',
-        'warning' => 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-300',
+        'ok' =>
+            'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700 text-green-800 dark:text-green-300',
+        'warning' =>
+            'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-700 text-yellow-800 dark:text-yellow-300',
         'critical' => 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700 text-red-800 dark:text-red-300',
     ];
 
@@ -15,7 +17,6 @@
         'critcal' => 'times-circle',
     ];
 @endphp
-
 <div class="border rounded-lg p-4 {{ $statusClasses[$statusValue] ?? $statusClasses['ok'] }}">
     <div class="flex items-center gap-3">
         <div class="flex-shrink-0">
@@ -37,13 +38,11 @@
         </div>
         <div class="flex-1">
             <p class="font-medium">{{ $status->message }}</p>
-            @if ($status->updated_at)
-                <p class="text-sm opacity-75">Senast uppdaterad:
-                    <time datetime="{{ $status->updated_at }}">
-                        {{ $status->formattedUpdatedAt }}
-                    </time>
-                </p>
-            @endif
+            <p class="text-sm opacity-75">Senast uppdaterad:
+                <time datetime="{{ $status->updated_at }}">
+                    {{ $status->formattedUpdatedAt }}
+                </time>
+            </p>
         </div>
     </div>
 </div>
