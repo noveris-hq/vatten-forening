@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/css/site.css",
+                "resources/css/leaflet.css",
                 "resources/js/site.js",
                 "resources/js/leaflet.js",
             ],

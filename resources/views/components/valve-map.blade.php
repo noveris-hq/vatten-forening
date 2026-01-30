@@ -8,8 +8,9 @@
     </div>
     <div class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800" id="valve-map">
         <div class="flex flex-col space-y-1.5 p-6">
-            <h3 class="text-2xl font-semibold leading-none tracking-tight flex items-center gap-2 text-gray-900 dark:text-gray-100"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <h3
+                class="text-2xl font-semibold leading-none tracking-tight flex items-center gap-2 text-gray-900 dark:text-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-droplets h-5 w-5 text-blue-900 dark:text-blue-400">
                     <path
@@ -23,7 +24,8 @@
                 fastighets avstängare.</p>
         </div>
         <div class="p-6 pt-0">
-            <div id="map-container" class="h-[600px] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 z-10">
+            <div id="map-container"
+                class="h-[600px] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 z-10">
             </div>
             <div class="mt-3 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                 <div class="flex items-center gap-2">
