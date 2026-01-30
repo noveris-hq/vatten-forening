@@ -10,6 +10,7 @@ export default defineConfig({
                 "resources/css/leaflet.css",
                 "resources/js/site.js",
                 "resources/js/leaflet.js",
+                "resources/js/valve-map.js",
             ],
             refresh: true,
         }),
