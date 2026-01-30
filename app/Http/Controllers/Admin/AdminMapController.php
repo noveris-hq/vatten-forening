@@ -37,6 +37,15 @@ final class AdminMapController extends Controller
             'lng' => 15.723075866929708,
         ];
 
+        if ($waterValves->isEmpty()) {
+            return view('member.map', [
+                'waterValves' => collect(),
+                'markers' => [],
+                'mapCenter' => $mapCenter,
+                'title' => 'Karta över området',
+            ]);
+        }
+
         $markers = $waterValves->map(fn ($valve) => [
             'lat' => $valve->latitude,
             'lng' => $valve->longitude,

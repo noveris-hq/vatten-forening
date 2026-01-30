@@ -14,12 +14,21 @@ final class MemberMapController extends Controller
      */
     public function index()
     {
-        $waterValves = WaterValve::with('user')->get();
-
         $mapCenter = [
             'lat' => 64.33077538985226,
             'lng' => 15.723075866929708,
         ];
+
+        $waterValves = WaterValve::with('user')->get();
+
+        if ($waterValves->isEmpty()) {
+            return view('member.map', [
+                'waterValves' => collect(),
+                'markers' => [],
+                'mapCenter' => $mapCenter,
+                'title' => 'Karta över området',
+            ]);
+        }
 
         $markers = $waterValves->map(fn ($valve) => [
             'lat' => $valve->latitude,
