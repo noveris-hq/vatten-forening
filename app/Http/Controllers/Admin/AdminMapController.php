@@ -38,11 +38,12 @@ final class AdminMapController extends Controller
         ];
 
         if ($waterValves->isEmpty()) {
-            return view('member.map', [
+            return view('admin.map.index', [
                 'waterValves' => collect(),
                 'markers' => [],
                 'mapCenter' => $mapCenter,
                 'title' => 'Karta över området',
+                'context' => $context,
             ]);
         }
 

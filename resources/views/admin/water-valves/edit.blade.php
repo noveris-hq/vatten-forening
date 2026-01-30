@@ -24,11 +24,13 @@
             @method('PUT')
 
             <div class="mb-4">
-                <label for="user_id" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Välj medlem</label>
+                <label for="user_id" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Välj
+                    medlem</label>
                 <select name="user_id" id="user_id" required
                     class="border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline">
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}" {{ old('user_id', $waterValve->user_id) == $user->id ? 'selected' : '' }}>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}"
+                            {{ old('user_id', $waterValve->user_id) == $user->id ? 'selected' : '' }}>
                             {{ $user->name }} - {{ $user->property_number ?? 'Inget fastighetsnummer' }}
                         </option>
                     @endforeach
@@ -52,7 +54,8 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="mb-4">
-                    <label for="latitude" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Latitud</label>
+                    <label for="latitude"
+                        class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Latitud</label>
                     <input type="number" step="any" name="latitude" id="latitude" required
                         value="{{ old('latitude', $waterValve->latitude) }}"
                         class="border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
@@ -63,7 +66,8 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="longitude" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Longitud</label>
+                    <label for="longitude"
+                        class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Longitud</label>
                     <input type="number" step="any" name="longitude" id="longitude" required
                         value="{{ old('longitude', $waterValve->longitude) }}"
                         class="border border-gray-300 dark:border-gray-600 rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline"
@@ -78,8 +82,7 @@
                 <label class="flex items-center">
                     <input type="hidden" name="is_open" value="0">
                     <input type="checkbox" name="is_open" value="1"
-                        {{ old('is_open', $waterValve->is_open) ? 'checked' : '' }}
-                        class="mr-2">
+                        {{ old('is_open', $waterValve->is_open) ? 'checked' : '' }} class="mr-2">
                     <span class="text-gray-700 dark:text-gray-300 text-sm font-bold">Ventilen är öppen</span>
                 </label>
                 @error('is_open')
@@ -90,9 +93,9 @@
             <!-- Map Section -->
             <div class="mb-6">
                 <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100">Välj position på karta</h3>
-                <div id="coordinate-picker-map" class="h-96 bg-gray-200 rounded border border-gray-300 dark:border-gray-600 relative"
-                     data-current-lat="{{ $waterValve->latitude }}"
-                     data-current-lng="{{ $waterValve->longitude }}">
+                <div id="coordinate-picker-map"
+                    class="h-96 bg-gray-200 rounded border border-gray-300 dark:border-gray-600 relative"
+                    data-current-lat="{{ $waterValve->latitude }}" data-current-lng="{{ $waterValve->longitude }}">
                     <div class="absolute inset-0 flex items-center justify-center">
                         <p class="text-gray-600 dark:text-gray-300">Karta laddar...</p>
                     </div>
@@ -104,8 +107,8 @@
 
             <div class="flex items-center justify-between">
                 <button type="submit"
-                    class="bg-blue-950/80 hover:bg-blue-900/80 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
-                    Uppdatera Vattenventil
+                    class="bg-blue-900/90 hover:cursor-pointer text-white inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-900/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
+                    Uppdatera vattenventil
                 </button>
                 <a href="{{ route('admin.map.index') }}"
                     class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
@@ -118,9 +121,8 @@
         <form action="{{ route('water-valves.destroy', $waterValve->id) }}" method="POST" class="mt-4">
             @csrf
             @method('DELETE')
-            <button type="submit"
-                    onclick="return confirm('Är du säker på att du vill ta bort denna vattenventil?')"
-                    class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
+            <button type="submit" onclick="return confirm('Är du säker på att du vill ta bort denna vattenventil?')"
+                class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
                 Ta bort Vattenventil
             </button>
         </form>

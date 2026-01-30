@@ -31,6 +31,7 @@
             </p>
         @endif
     </div>
+    {{-- {{ dd($context) }} --}}
     <div class="p-6 pt-0 space-y-4">
         @if (auth()->user()->is_admin && $context === 'admin')
             <div class="relative" x-data="{ search: '{{ request('search') }}' }">

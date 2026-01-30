@@ -19,7 +19,8 @@
                     <path
                         d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97">
                     </path>
-                </svg>Vattenledningsnät</h3>
+                </svg>Vattenledningsnät
+            </h3>
             <p class="text-sm text-gray-600 dark:text-gray-300">Blå linje visar huvudledningen. Markörer visar varje
                 fastighets avstängare.</p>
         </div>

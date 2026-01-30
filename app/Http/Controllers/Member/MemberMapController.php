@@ -14,6 +14,8 @@ final class MemberMapController extends Controller
      */
     public function index()
     {
+        $context = 'member';
+
         $mapCenter = [
             'lat' => 64.33077538985226,
             'lng' => 15.723075866929708,
@@ -27,6 +29,7 @@ final class MemberMapController extends Controller
                 'markers' => [],
                 'mapCenter' => $mapCenter,
                 'title' => 'Karta över området',
+                'context' => $context,
             ]);
         }
 
@@ -42,7 +45,7 @@ final class MemberMapController extends Controller
 
         $title = 'Karta över området';
 
-        return view('member.map', compact('waterValves', 'markers', 'mapCenter', 'title'));
+        return view('member.map', compact('waterValves', 'markers', 'mapCenter', 'title', 'context'));
     }
 
     /**
