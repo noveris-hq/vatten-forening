@@ -20,6 +20,13 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+            'is_admin' => true,
+            'super' => true,
+            'street_name' => '123 Main St',
+            'city' => 'Anytown',
+            'property_number' => 'A1',
+            'postal_code' => '12345',
         ]);
     }
 }
