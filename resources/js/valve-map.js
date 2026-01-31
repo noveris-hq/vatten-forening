@@ -39,8 +39,13 @@ function initializeMainMap() {
     let map = L.map("map-container", {
         center: [mapCenter.lat, mapCenter.lng],
         zoom: 15,
-        layers: [satellite], // Default to satellite
+        layers: [satellite],
         touchZoom: true,
+        scrollWheelZoom: false,
+        doubleClickZoom: true,
+        boxZoom: false,
+        keyboard: false,
+        dragging: true,
     });
 
     // Add layer control
@@ -226,4 +231,3 @@ function initializeCoordinatePicker() {
         }
     }
 }
-
