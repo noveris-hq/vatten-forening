@@ -57,8 +57,8 @@
                 </form>
             </div>
         @endif
-        <div class="relative w-full overflow-auto overflow-x-auto">
-            <table class="w-full caption-bottom text-sm">
+        <div class="relative overflow-x-auto">
+            <table class="min-w-full caption-bottom text-sm">
                 <thead class="[&amp;_tr]:border-b">
                     <tr class="border-b border-gray-200 dark:border-gray-700">
                         <th class="h-12 px-4 text-left align-middle font-medium text-gray-600 dark:text-gray-300">
@@ -93,9 +93,9 @@
                                     class="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-gray-900 dark:text-gray-100">
                                     {{ $valve->user?->property_number ?? 'Huvudledning' }}</div>
                             </td>
-                            <td class="p-4 align-middle hidden sm:table-cell text-gray-900 dark:text-gray-100">
+                            <td class="p-4 align-middle text-gray-900 dark:text-gray-100">
                                 {{ $valve->user?->street_name ?? 'Huvudledning' }}</td>
-                            <td class="p-4 align-middle hidden md:table-cell text-gray-600 dark:text-gray-300">
+                            <td class="p-4 align-middle text-gray-600 dark:text-gray-300">
                                 @if ($valve->is_open)
                                     <span
                                         class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-semibold text-green-800 dark:text-green-300">Öppen</span>
@@ -104,7 +104,7 @@
                                         class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900/30 px-2.5 py-0.5 text-xs font-semibold text-red-800 dark:text-red-300">Stängd</span>
                                 @endif
                             </td>
-                            <td class="p-4 align-middle hidden md:table-cell text-gray-600 dark:text-gray-300">
+                            <td class="p-4 align-middle text-gray-600 dark:text-gray-300">
                                 {{ $valve->location_description }}</td>
                             <td class="p-4 align-middle">
                                 <div

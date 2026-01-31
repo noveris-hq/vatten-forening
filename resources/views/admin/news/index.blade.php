@@ -2,14 +2,14 @@
 
 @section('content')
     <x-dashboard-nav />
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto px-4 pb-8">
         <div class="mb-8">
             <h1 class="text-3xl font-serif font-bold text-gray-900 dark:text-gray-100">Nyheter</h1>
             <p class="mt-2 text-gray-500 dark:text-gray-400">Skapa, redigera och ta bort nyheter för föreningen.</p>
         </div>
         <div class="bg-card p-6 rounded-xl border bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
             <div class="space-y-6">
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between flex-column">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Nyheter &amp; meddelanden</h3>
                     <a href="{{ route('nyheter.create') }}"
                         class="bg-blue-900/90 text-white inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-900/80 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">

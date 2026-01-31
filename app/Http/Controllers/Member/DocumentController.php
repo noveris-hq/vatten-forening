@@ -12,6 +12,8 @@ final class DocumentController extends Controller
     {
         $documents = Document::latest()->get();
 
+        $context = 'member';
+
         $groupedDocuments = $documents
             ->groupBy('year')
             ->sortKeysDesc()
@@ -21,7 +23,7 @@ final class DocumentController extends Controller
 
         $title = 'Medlemsportal - Dokument';
 
-        return view('member.documents', compact('documents', 'groupedDocuments', 'title'));
+        return view('member.documents', compact('documents', 'groupedDocuments', 'title', 'context'));
     }
 
     public function download(Document $document)

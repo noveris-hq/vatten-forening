@@ -16,7 +16,7 @@
                         </p>
                     </div>
 
-                    @if (auth()->user()?->is_admin)
+                    @if (auth()->user()?->is_admin && $context === 'admin')
                         <button
                             class="inline-flex items-center gap-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium text-gray-900 dark:text-gray-100 shadow-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"

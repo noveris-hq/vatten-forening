@@ -2,7 +2,7 @@
 
 @section('content')
     <x-dashboard-nav />
-    <main class="container mx-auto py-8">
+    <main class="container mx-auto px-4 pb-8">
         <div class=" mx-auto">
             <div class="space-y-6">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

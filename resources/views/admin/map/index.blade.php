@@ -2,7 +2,7 @@
 
 @section('content')
     <x-dashboard-nav />
-    <main class="container mx-auto pb-8">
+    <main class="container mx-auto px-4 pb-8">
         <div class="mx-auto">
             <x-valve-map :waterValves="$waterValves" :markers="$markers" :mapCenter="$mapCenter" />
             <x-valve-map-table :waterValves="$waterValves" :context="$context" />
