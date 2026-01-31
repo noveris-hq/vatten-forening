@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ $page->title ?? (isset($title) ? $title : 'Vatten Föreningen') }}</title>
     <script>
-        // Theme detection script - runs before page render to prevent flash
+        // Apply dark mode class based on user preference or system setting
         (function() {
             const theme = localStorage.getItem('theme') || 'system';
-            const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)')
+                .matches);
             if (isDark) {
                 document.documentElement.classList.add('dark');
             }
@@ -23,7 +24,7 @@
 <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900">
     @include('partials.navbar')
     @yield('content')
-    @include('partials.footer')
+    @include('components.footer')
     @livewireScripts
 </body>
 
