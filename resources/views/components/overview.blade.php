@@ -104,7 +104,7 @@
             <div class="flex items-center justify-between">
                 <span class="text-gray-600 dark:text-gray-400">Status</span>
                 <span
-                    class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-300">{{ $user->translated_payment_status }}</span>
+                    class="inline-flex items-center rounded-full {{ $user->payment_status_color }} px-2.5 py-0.5 text-xs font-medium ">{{ $user->translated_payment_status }}</span>
             </div>
             <div class="flex items-center justify-between">
                 <span class="text-gray-600 dark:text-gray-400">Förfallodatum</span>

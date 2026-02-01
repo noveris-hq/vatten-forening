@@ -28,13 +28,18 @@
             <div id="map-container"
                 class="h-[600px] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 z-10">
             </div>
-            <div class="mt-3 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                <div class="flex items-center gap-2">
+            <div class="md:mt-3 mt-5 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                <div class="flex items-center gap-2 flex-col md:flex-row text-center">
                     <div class="w-4 h-1 bg-blue-600 rounded"></div><span>Vattenledning</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow"></div>
-                    <span>Avstängare</span>
+                <div class="flex items-center gap-2 flex-col md:flex-row text-center">
+                    <div class="md:w-4 md:h-4 h-3 w-3 rounded-full bg-red-600 border-2 border-white shadow">
+                    </div>
+                    <span>Stängd ventil</span>
+                </div>
+                <div class="flex items-center gap-2 flex-col md:flex-row text-center">
+                    <div class="md:w-4 md:h-4 h-3 w-3 rounded-full bg-blue-600 border-2 border-white shadow"></div>
+                    <span>Öppen ventil</span>
                 </div>
             </div>
         </div>
