@@ -1,5 +1,5 @@
 @props(['waterValves', 'markers', 'mapCenter'])
-@vite(['resources/css/leaflet.css', 'resources/js/leaflet.js', 'resources/js/valve-map.js'])
+@vite(['resources/css/leaflet.css', 'resources/js/leaflet.js', 'resources/js/valve-map.js', 'resources/css/images/marker-icon-2x.png', 'resources/css/images/marker-icon.png', 'resources/css/images/marker-shadow.png', 'resources/css/images/marker-icon-red-2x.png', 'resources/css/images/marker-icon.png'])
 
 <div class="space-y-6">
     <div class="px-4">
