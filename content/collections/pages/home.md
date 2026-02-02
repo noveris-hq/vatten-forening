@@ -74,10 +74,10 @@ contact_intro:
         type: text
         text: 'Har du frågor eller behöver hjälp? Kontakta oss gärna så hjälper vi dig.'
 contact_phone: '08-123 45 67'
-contact_email: info@vastrakarbacken.se
+contact_email: info@ostrakarbacken.se
 author: 01cf83db-9a18-45c8-9488-997c289e6cdb
 updated_by: 1
-updated_at: 1769876389
+updated_at: 1769964198
 hero_image: karbacken-vatten.jpg
 about_image: karbacken-vatten.jpg
 status: warning

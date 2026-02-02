@@ -34,12 +34,6 @@
                             Driftstatus
                         </a>
                     </li>
-                    <li>
-                        <a href="#kontakt"
-                            class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors focus-ring rounded">
-                            Kontakta oss
-                        </a>
-                    </li>
                 </ul>
             </div>
 
