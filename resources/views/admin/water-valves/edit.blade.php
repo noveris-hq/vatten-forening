@@ -5,7 +5,8 @@
 @vite(['resources/css/leaflet.css', 'resources/js/leaflet.js', 'resources/js/valve-map.js'])
 
 @section('content')
-    <main class="container max-w-4xl mx-auto px-4 py-8">
+    <main
+        class="container max-w-4xl mx-auto px-4 py-8 bg-white dark:bg-gray-800 rounded border border-gray-300 dark:border-gray-600 px-8 pt-6 pb-8 mb-4">
         <h1 class="text-2xl font-bold mb-6 dark:text-white">Redigera Vattenventil</h1>
 
         <div class="mb-4 p-4 bg-blue-50 border border-blue-200 rounded">
@@ -18,8 +19,7 @@
             </p>
         </div>
 
-        <form action="{{ route('water-valves.update', $waterValve->id) }}" method="POST"
-            class="bg-white dark:bg-gray-800 rounded border border-gray-300 dark:border-gray-600 px-8 pt-6 pb-8 mb-4">
+        <form action="{{ route('water-valves.update', $waterValve->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -122,8 +122,8 @@
             @csrf
             @method('DELETE')
             <button type="submit" onclick="return confirm('Är du säker på att du vill ta bort denna vattenventil?')"
-                class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
-                Ta bort Vattenventil
+                class="text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 hover:cursor-pointer bg-red-100 dark:bg-red-900/30 px-3 py-1.5 rounded-md">
+                Radera ventil
             </button>
         </form>
     </main>

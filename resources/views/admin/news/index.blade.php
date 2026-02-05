@@ -2,7 +2,7 @@
 
 @section('content')
     <x-dashboard-nav />
-    <div class="max-w-4xl mx-auto px-4 pb-8">
+    <div class="container max-w-4xl mx-auto px-4 pb-8">
         <div class="mb-8">
             <h1 class="text-3xl font-serif font-bold text-gray-900 dark:text-gray-100">Nyheter</h1>
             <p class="mt-2 text-gray-500 dark:text-gray-400">Skapa, redigera och ta bort nyheter för föreningen.</p>

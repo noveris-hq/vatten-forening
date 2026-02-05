@@ -33,7 +33,7 @@
     </div>
     {{-- {{ dd($context) }} --}}
     <div class="p-6 pt-0 space-y-4">
-        @if (auth()->user()->is_admin && $context === 'admin')
+        @if (auth()->user()->is_admin)
             <div class="relative" x-data="{ search: '{{ request('search') }}' }">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

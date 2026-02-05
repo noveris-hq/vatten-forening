@@ -55,7 +55,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit"
-                                class="text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 hover:underline hover:cursor-pointer bg-red-100 dark:bg-red-900/30 px-3 py-1.5 rounded-md">
+                                class="text-sm text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 hover:cursor-pointer bg-red-100 dark:bg-red-900/30 px-3 py-1.5 rounded-md">
                                 Ta bort
                             </button>
                         </form>

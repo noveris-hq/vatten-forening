@@ -4,7 +4,7 @@
 @section('content')
     <x-dashboard-nav />
 
-    <main class="container mx-auto px-4 py-8">
+    <main class="container max-w-4xl mx-auto px-4 py-8">
         <div class="space-y-8">
             <!-- Header + quick admin link -->
             <div>

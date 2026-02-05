@@ -2,14 +2,15 @@
 
 @section('content')
     <x-dashboard-nav />
-    <main class="container mx-auto px-4 py-8">
+    <main class="container max-w-4xl mx-auto px-4 py-8">
         <div class="py-12">
-            <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+            <div class="mx-auto sm:px-6 lg:px-8">
 
                 <h1 class="text-2xl font-bold mb-6">Status</h1>
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-                    <form action="{{ route('status.update') }}" method="POST" class="bg-white dark:bg-gray-800 rounded px-8 pt-6 pb-8 mb-4">
+                    <form action="{{ route('status.update') }}" method="POST"
+                        class="bg-white dark:bg-gray-800 rounded px-8 pt-6 pb-8 mb-4">
                         @csrf
                         @method('PUT')
                         <!-- Status indicators -->
@@ -29,7 +30,8 @@
                                     class="h-5 w-5 text-amber-600 dark:text-amber-400 border-gray-300 dark:border-gray-600 focus:ring-amber-500">
                                 <div>
                                     <div class="font-medium text-amber-700 dark:text-amber-300">Driftsstörning</div>
-                                    <div class="text-sm text-gray-600 dark:text-gray-300">Pågående problem som påverkar systemet</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-300">Pågående problem som påverkar
+                                        systemet</div>
                                 </div>
                             </label>
 
@@ -38,7 +40,8 @@
                                     class="h-5 w-5 text-red-600 dark:text-red-400 border-gray-300 dark:border-gray-600 focus:ring-red-500">
                                 <div>
                                     <div class="font-medium text-red-700 dark:text-red-300">Avbrott</div>
-                                    <div class="text-sm text-gray-600 dark:text-gray-300">Kritiskt fel - vattnet är avstängt</div>
+                                    <div class="text-sm text-gray-600 dark:text-gray-300">Kritiskt fel - vattnet är avstängt
+                                    </div>
                                 </div>
                             </label>
 

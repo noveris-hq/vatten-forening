@@ -2,7 +2,7 @@
 
 <x-dashboard-nav />
 @section('content')
-    <main class="container mx-auto px-4 py-8">
+    <main class="container max-w-4xl mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold mb-6 dark:text-white">Redigera nyhet</h1>
 
         <form action="{{ route('nyheter.update', $news->id) }}" method="POST"

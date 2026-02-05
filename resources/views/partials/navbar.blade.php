@@ -1,14 +1,15 @@
-<header x-data="{ isMenuOpen: false }" class="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+<header x-data="{ isMenuOpen: false }"
+    class="sticky top-0 z-50 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-16">
             <a href="/"
                 class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
                 aria-label="Östra Karbäckens vattenförening - Hem">
-                <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
-                    <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
+                <div class="pr-2 rounded-lg">
+                    <img src="/assets/droplet.svg" class="h-6 w-6 dark:invert" alt="droplet" />
                 </div>
-                <span class="font-semibold text-lg text-gray-900 dark:text-gray-100 hidden sm:block">
-                    Östra Karbäckens vattenförening
+                <span class="font-semibold text-sm sm:text-xl text-gray-900 dark:text-gray-100">
+                    Östra Karbäckens Vattenförening
                 </span>
             </a>
 
@@ -49,11 +50,13 @@
                     :aria-label="isMenuOpen ? 'Stäng meny' : 'Öppna meny'">
                     <svg x-show="!isMenuOpen" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                     <svg x-show="isMenuOpen" x-cloak class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>

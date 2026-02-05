@@ -3,8 +3,7 @@ id: home
 blueprint: landing
 title: 'Östra Karbäckens Vattenförening'
 template: home
-hero_badge: Vattenförening
-hero_title: 'Östra Karbäckens vattenförening'
+hero_title: 'Östra Karbäckens Vattenförening'
 hero_content:
   -
     type: paragraph
@@ -77,7 +76,7 @@ contact_phone: '08-123 45 67'
 contact_email: info@ostrakarbacken.se
 author: 01cf83db-9a18-45c8-9488-997c289e6cdb
 updated_by: 1
-updated_at: 1769964198
+updated_at: 1770278826
 hero_image: karbacken-vatten.jpg
 about_image: karbacken-vatten.jpg
 status: warning
@@ -142,4 +141,5 @@ cards:
     type: card
     enabled: true
     url: 'https://en-fkocbl.eu-w1a.frbit.app/medlemsportal'
+hero_badge: vattenförening
 ---

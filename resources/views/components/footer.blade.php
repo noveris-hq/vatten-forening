@@ -3,17 +3,16 @@
         <div class="grid gap-8 md:grid-cols-3">
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
-                        <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
+                    <div class="pr-2 rounded-lg">
+                        <img src="/assets/droplet.svg" class="h-6 w-6 dark:invert" alt="droplet" />
                     </div>
 
                     <span class="font-serif font-semibold text-gray-900 dark:text-gray-100">
-                        Östra Karbäckens vattenförening
+                        Östra Karbäckens Vattenförening
                     </span>
                 </div>
                 <p class="text-sm text-gray-600 dark:text-gray-400 max-w-xs">
                     {{ Statamic::modify($page->contact_intro)->stripTags() }}
-                    {{-- {{ Statamic::modify($page->contact_intro)->bardHtml() }} --}}
                 </p>
             </div>
 
@@ -61,7 +60,7 @@
         <div
             class="mt-10 pt-6 border-t border-gray-300 dark:border-gray-700 text-center text-sm text-gray-600 dark:text-gray-400">
             <p>
-                {{ '© ' . date('Y') }} Östra Karbäckens vattenförening. Alla
+                {{ '© ' . date('Y') }} Östra Karbäckens Vattenförening. Alla
                 rättigheter förbehållna.
             </p>
         </div>

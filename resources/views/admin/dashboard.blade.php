@@ -3,7 +3,7 @@
 @section('content')
     <x-dashboard-nav />
     <div class="min-h-screen antialiased">
-        <main class="container mx-auto px-4 py-8">
+        <main class="container max-w-4xl mx-auto px-4 py-8">
             <div class=" mx-auto">
                 <!-- Welcome -->
                 <div class="mb-8">

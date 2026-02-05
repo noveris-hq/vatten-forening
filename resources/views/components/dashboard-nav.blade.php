@@ -5,22 +5,25 @@
                 <a href="/"
                     class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md"
                     aria-label="Östra Karbäckens vattenförening - Hem">
-                    <div class="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-lightblue-600">
-                        <img src="/assets/droplet.svg" class="h-4 w-4" alt="droplet" />
+                    <div class="pr-2 rounded-lg">
+                        <img src="/assets/droplet.svg" class="h-6 w-6 dark:invert" alt="droplet" />
                     </div>
-                    <span class="font-semibold text-gray-900 dark:text-gray-100 hidden sm:block">
-                        Östra Karbäckens vattenförening
+                    <span class="font-semibold text-sm sm:text-xl text-gray-900 dark:text-gray-100">
+                        Östra Karbäckens Vattenförening
                     </span>
                 </a>
             </div>
             <div class="flex items-center gap-4">
                 <div class="flex items-center gap-2">
                     <x-theme-toggle />
-                    <span class="text-sm text-gray-700 dark:text-gray-300">Inloggad som:</span><span
-                        class="text-sm font-medium text-green-600 dark:text-green-400">{{ auth()->user()->email }}</span>
-                    @if (auth()->user()->is_admin)
-                        - <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">Admin</span>
-                    @endif
+                    <div class="hidden lg:block">
+                        <span class="text-sm text-gray-700 dark:text-gray-300">Inloggad som:</span><span
+                            class="text-sm font-medium text-green-600 dark:text-green-400">{{ auth()->user()->email }}
+                        </span>
+                        @if (auth()->user()->is_admin)
+                            <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">- Admin</span>
+                        @endif
+                    </div>
                 </div>
                 <form method="POST" action="/logout" class="inline-flex items-center ml-3">
 
@@ -41,7 +44,7 @@
 </header>
 <nav
     class="border-b border-gray-200 dark:border-gray-700 mb-8 bg-gray-50 dark:bg-gray-800 sticky sm:top-17 top-[69px] z-40">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto">
         <div class="flex gap-1">
             <a href="{{ route('member.dashboard') }}">
                 <button

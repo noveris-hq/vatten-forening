@@ -8,9 +8,10 @@
     </div>
 
     <div class="py-12">
-        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+        <div class="container max-w-4xl mx-auto sm:px-6 lg:px-8">
 
-            <form method="POST" action="{{ route('status.update') }}" class="bg-white dark:bg-gray-800 shadow-sm rounded-lg p-6">
+            <form method="POST" action="{{ route('status.update') }}"
+                class="bg-white dark:bg-gray-800 shadow-sm rounded-lg p-6">
                 @csrf
                 @method('PUT')
 
@@ -34,7 +35,8 @@
                             class="mt-1 h-5 w-5 text-amber-600 dark:text-amber-400 border-gray-300 dark:border-gray-600 focus:ring-amber-500">
                         <div>
                             <div class="font-medium">Driftsstörning</div>
-                            <div class="text-sm text-gray-500 dark:text-gray-400">Pågående problem som påverkar systemet</div>
+                            <div class="text-sm text-gray-500 dark:text-gray-400">Pågående problem som påverkar systemet
+                            </div>
                         </div>
                     </label>
 

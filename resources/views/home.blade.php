@@ -14,9 +14,9 @@
             <div class="relative container mx-auto px-4 py-24 md:py-32 lg:py-40">
                 <div class="max-w-2xl">
                     <div class="flex items-center gap-2 mb-4">
-                        <span class="text-white/90 font-medium text-sm tracking-wide uppercase">
-                            {{ $page->hero_badge }}
-                        </span>
+                        {{-- <span class="text-white/90 font-medium text-sm tracking-wide uppercase"> --}}
+                        {{--     {{ $page->hero_badge }} --}}
+                        {{-- </span> --}}
                     </div>
 
                     <h1 id="hero-heading"
@@ -44,7 +44,7 @@
             </div>
         </section>
 
-        <section id="status" class="py-8 bg-gray-50 dark:bg-gray-800/50 scroll-mt-16">
+        <section id="status" class="py-8 dark:bg-gray-800/50 scroll-mt-16">
             <div class="container mx-auto px-4 max-w-2xl">
                 @if ($page->system_status)
                     <x-status-banner :status="$status" />
@@ -104,15 +104,15 @@
                                     class="w-full h-full object-cover" />
                             </div>
                         @endif
-                        @if ($page->property_count)
-                            <div
-                                class="absolute -bottom-4 -left-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700">
-                                <p class="text-2xl font-serif font-bold text-blue-900/90 dark:text-blue-400">
-                                    {{ $page->property_count }}st
-                                </p>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">fastigheter</p>
-                            </div>
-                        @endif
+                        {{-- @if ($page->property_count) --}}
+                        {{--     <div --}}
+                        {{--         class="absolute -bottom-4 -left-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700"> --}}
+                        {{--         <p class="text-2xl font-serif font-bold text-blue-900/90 dark:text-blue-400"> --}}
+                        {{--             {{ $page->property_count }}st --}}
+                        {{--         </p> --}}
+                        {{--         <p class="text-sm text-gray-600 dark:text-gray-300">fastigheter</p> --}}
+                        {{--     </div> --}}
+                        {{-- @endif --}}
                     </div>
                 </div>
             </div>

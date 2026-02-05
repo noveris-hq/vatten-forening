@@ -2,7 +2,7 @@
 
 @section('content')
     <x-dashboard-nav />
-    <main class="container mx-auto px-4 py-8">
+    <main class="container max-w-4xl mx-auto px-4 py-8">
         <h1 class="text-2xl dark:text-white font-bold mb-6">Skapa nyhet</h1>
 
         <form action="{{ route('nyheter.store') }}" method="POST"

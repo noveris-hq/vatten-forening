@@ -46,11 +46,13 @@
     </div>
 </div>
 
-@push('scripts')
-    <script>
-        window.mapData = {
-            markers: {!! json_encode($markers) !!},
-            mapCenter: {!! json_encode($mapCenter) !!}
-        };
-    </script>
-@endpush
+@once
+    @push('scripts')
+        <script>
+            window.mapData = {
+                markers: {!! json_encode($markers) !!},
+                mapCenter: {!! json_encode($mapCenter) !!}
+            };
+        </script>
+    @endpush
+@endonce
