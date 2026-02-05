@@ -16,7 +16,6 @@
 
                     <div>
                         <p class="font-medium leading-tight text-gray-900 dark:text-gray-100">{{ $doc->filename }}</p>
-
                         <div
                             class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600 dark:text-gray-400">
                             @if ($doc->uploader)
@@ -29,11 +28,7 @@
                                     {{ $translation[$doc->category] }}
                                 </span>
                             @endif
-
                             <span>Uppladdad {{ $doc->created_at->format('Y-m-d') }}</span>
-
-                            {{-- Uncomment if you want to show file size --}}
-                            {{-- <span>{{ $doc->getFormattedSizeAttribute ?? '—' }}</span> --}}
                         </div>
                     </div>
                 </div>
