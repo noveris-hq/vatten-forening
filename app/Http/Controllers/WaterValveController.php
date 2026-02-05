@@ -5,16 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Requests\WaterValveRequest;
 use App\Models\User;
 use App\Models\WaterValve;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 final class WaterValveController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Show the form for creating a new water valve.
      */
     public function create(): View
     {
+        $this->authorize('create', WaterValve::class);
+
         $users = User::orderBy('name')->get();
         $title = 'Skapa vattenventil';
 
@@ -60,6 +65,7 @@ final class WaterValveController extends Controller
      */
     public function update(WaterValveRequest $request, WaterValve $waterValve): RedirectResponse
     {
+        $this->authorize('update', $waterValve);
         $validated = $request->validated();
 
         // Check if another user already has this water valve

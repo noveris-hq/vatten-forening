@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Member;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\WaterValve;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 final class MemberMapController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+
+        $this->authorize('viewAny', WaterValve::class);
         $context = 'member';
 
         $mapCenter = [
